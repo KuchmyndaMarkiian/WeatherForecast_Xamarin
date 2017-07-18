@@ -1,16 +1,24 @@
 using System;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
+using WeatherForecast.Infrastructure.Models.ApiModels.Common;
 
 namespace WeatherForecast.Infrastructure.Models
 {
-    internal class CityModel :IComparable<CityModel>
+    public class City :IComparable<City>
     {
+        [JsonProperty("id")]
         public int Id { get; set; }
+        [JsonProperty("name")]
         public string Name { get; set; }
+        [JsonProperty("country")]
         public string CountryCode { get; set; }
-        public override string ToString() => $"{Id} {Name},{CountryCode}";
+        [JsonProperty("coord")]
+        public Coord Coord { get; set; }
+        public override string ToString() => $"{Id} {Name},{CountryCode} Lon:{Coord.Longtitude} Lat:{Coord.Latitude}";
         
 
-        public int CompareTo(CityModel other)
+        public int CompareTo(City other)
         {
             if (ReferenceEquals(this, other)) return 0;
             if (ReferenceEquals(null, other)) return 1;

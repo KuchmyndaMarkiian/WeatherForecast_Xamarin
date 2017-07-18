@@ -12,16 +12,16 @@ namespace WeatherForecast.Infrastructure
     {
         private readonly HttpClient _client = new HttpClient();
 
-        public async Task<List<CityModel>> DownloadCities()
+        public async Task<List<City>> DownloadCities()
         {
-            var listResult = new List<CityModel>();
+            var listResult = new List<City>();
             var result = await _client.SendAsync(
                 new HttpRequestMessage(HttpMethod.Get, "http://openweathermap.org/help/city_list.txt"));
             if (result.IsSuccessStatusCode)
             {
                 var body = await result.Content.ReadAsStringAsync();
                 string[] splited = body.Substring(body.IndexOf("\n", StringComparison.Ordinal) + 1).Split('\n');
-                IParsingFactory<CityModel> factory = new CityParsingFactory();
+                IParsingFactory<City> factory = new CityParsingFactory();
                 listResult = factory.ParseText(splited);
             }
             return listResult;

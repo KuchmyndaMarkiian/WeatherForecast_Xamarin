@@ -61,11 +61,23 @@
     <Compile Include="Infrastructure\Abstractions\JsonConverter.cs" />
     <Compile Include="Infrastructure\DataDownloader.cs" />
     <Compile Include="Infrastructure\Extensions.cs" />
-    <Compile Include="Infrastructure\Models\CityModel.cs" />
+    <Compile Include="Infrastructure\Helpers\IApiProvider.cs" />
+    <Compile Include="Infrastructure\Helpers\OpenWeatherProvider.cs" />
+    <Compile Include="Infrastructure\Models\ApiModels\CityCurrrentWeather.cs" />
+    <Compile Include="Infrastructure\Models\ApiModels\Common\Clouds.cs" />
+    <Compile Include="Infrastructure\Models\ApiModels\Common\Coord.cs" />
+    <Compile Include="Infrastructure\Models\ApiModels\Common\IWeatherType.cs" />
+    <Compile Include="Infrastructure\Models\ApiModels\Common\Snow.cs" />
+    <Compile Include="Infrastructure\Models\ApiModels\FiveDaysWeather.cs" />
+    <Compile Include="Infrastructure\Models\ApiModels\Common\Wind.cs" />
+    <Compile Include="Infrastructure\Models\ApiModels\Common\Weather.cs" />
+    <Compile Include="Infrastructure\Models\ApiModels\Common\Main.cs" />
+    <Compile Include="Infrastructure\Models\ApiModels\Common\Rain.cs" />
+    <Compile Include="Infrastructure\Models\City.cs" />
     <Compile Include="Infrastructure\Parsers\CityParsingFactory.cs" />
     <Compile Include="Infrastructure\Abstractions\IParsingFactory.cs" />
-    <Compile Include="LoadingActivity.cs" />
-    <Compile Include="MainActivity.cs" />
+    <Compile Include="Activities\LoadingActivity.cs" />
+    <Compile Include="Activities\MainActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

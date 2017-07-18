@@ -10,7 +10,7 @@ using Android.Widget;
 using WeatherForecast.Infrastructure;
 using WeatherForecast.Infrastructure.Models;
 
-namespace WeatherForecast
+namespace WeatherForecast.Activities
 {
     [Activity(Label = "Weather Forecast", MainLauncher = true)]
     public class LoadingActivity : Activity
@@ -20,7 +20,7 @@ namespace WeatherForecast
         private AutoCompleteTextView _autoCompleteTextView;
 
         private readonly CancellationTokenSource _cancellationTokenSource = new CancellationTokenSource();
-        private List<CityModel> _cities;
+        private List<City> _cities;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -32,7 +32,7 @@ namespace WeatherForecast
             FindViewById<Button>(Resource.Id.loadingNextButton).Click += (sender, args) =>
             {
                 var typed = _autoCompleteTextView.Text;
-                CityModel founded = _cities.First(x => $"{x.Name},{x.CountryCode}".Equals(typed));
+                City founded = _cities.First(x => $"{x.Name},{x.CountryCode}".Equals(typed));
                 if (founded == null) return;
                 Intent intent = new Intent(this, typeof(MainActivity));
                 intent.PutExtra("city", founded);
