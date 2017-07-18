@@ -1,4 +1,5 @@
-﻿using Android.Content;
+﻿using System;
+using Android.Content;
 using WeatherForecast.Infrastructure.Abstractions;
 
 namespace WeatherForecast.Infrastructure

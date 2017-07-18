@@ -44,6 +44,9 @@
     <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Binding_Avi">
+      <HintPath>..\..\BindedJar`s\Indicators\AndroidBindings\Binding_Avi\bin\Debug\Binding_Avi.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Mono.Android" />
     <Reference Include="mscorlib" />
@@ -58,6 +61,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Infrastructure\Helpers\UiInitializators.cs" />
+    <Compile Include="Views\Fragments\TodayDetailsFragment.cs" />
+    <Compile Include="Views\Fragments\TodayFragment.cs" />
     <Compile Include="Infrastructure\Abstractions\JsonConverter.cs" />
     <Compile Include="Infrastructure\DataDownloader.cs" />
     <Compile Include="Infrastructure\Extensions.cs" />
@@ -76,8 +82,8 @@
     <Compile Include="Infrastructure\Models\City.cs" />
     <Compile Include="Infrastructure\Parsers\CityParsingFactory.cs" />
     <Compile Include="Infrastructure\Abstractions\IParsingFactory.cs" />
-    <Compile Include="Activities\LoadingActivity.cs" />
-    <Compile Include="Activities\MainActivity.cs" />
+    <Compile Include="Views\Activities\LoadingActivity.cs" />
+    <Compile Include="Views\Activities\MainActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -90,6 +96,15 @@
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
     <AndroidResource Include="Resources\layout\mainWindow.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\todayFragment.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\loadingDialog.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\todayDetailsFragment.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

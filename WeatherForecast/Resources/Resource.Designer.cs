@@ -31,6 +31,24 @@ namespace WeatherForecast
 		public partial class Attribute
 		{
 			
+			// aapt resource value: 0x7f010005
+			public const int indicatorColor = 2130771973;
+			
+			// aapt resource value: 0x7f010004
+			public const int indicatorName = 2130771972;
+			
+			// aapt resource value: 0x7f010003
+			public const int maxHeight = 2130771971;
+			
+			// aapt resource value: 0x7f010001
+			public const int maxWidth = 2130771969;
+			
+			// aapt resource value: 0x7f010002
+			public const int minHeight = 2130771970;
+			
+			// aapt resource value: 0x7f010000
+			public const int minWidth = 2130771968;
+			
 			static Attribute()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
@@ -60,20 +78,62 @@ namespace WeatherForecast
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f050002
-			public const int autocompleteView = 2131034114;
+			// aapt resource value: 0x7f060001
+			public const int autocompleteView = 2131099649;
 			
-			// aapt resource value: 0x7f050003
-			public const int loadingNextButton = 2131034115;
+			// aapt resource value: 0x7f060011
+			public const int cityHeader = 2131099665;
 			
-			// aapt resource value: 0x7f050000
-			public const int loadingProgressBar = 2131034112;
+			// aapt resource value: 0x7f060007
+			public const int cloudinessHeader = 2131099655;
 			
-			// aapt resource value: 0x7f050001
-			public const int searchBox = 2131034113;
+			// aapt resource value: 0x7f06000f
+			public const int currentTemperture = 2131099663;
 			
-			// aapt resource value: 0x7f050004
-			public const int tmpInfo = 2131034116;
+			// aapt resource value: 0x7f060008
+			public const int humidityHeader = 2131099656;
+			
+			// aapt resource value: 0x7f06000e
+			public const int imageView1 = 2131099662;
+			
+			// aapt resource value: 0x7f060003
+			public const int indicator = 2131099651;
+			
+			// aapt resource value: 0x7f060002
+			public const int loadingNextButton = 2131099650;
+			
+			// aapt resource value: 0x7f060004
+			public const int mainWindow = 2131099652;
+			
+			// aapt resource value: 0x7f060012
+			public const int openMap = 2131099666;
+			
+			// aapt resource value: 0x7f060009
+			public const int pressureHeader = 2131099657;
+			
+			// aapt resource value: 0x7f060010
+			public const int rangeTemperture = 2131099664;
+			
+			// aapt resource value: 0x7f060000
+			public const int searchBox = 2131099648;
+			
+			// aapt resource value: 0x7f06000c
+			public const int sunriseHeader = 2131099660;
+			
+			// aapt resource value: 0x7f06000d
+			public const int sunsetHeader = 2131099661;
+			
+			// aapt resource value: 0x7f060006
+			public const int todayDetailFragmentContainer = 2131099654;
+			
+			// aapt resource value: 0x7f060005
+			public const int todayFragmentContainer = 2131099653;
+			
+			// aapt resource value: 0x7f06000b
+			public const int windDirectionHeader = 2131099659;
+			
+			// aapt resource value: 0x7f06000a
+			public const int windSpeedHeader = 2131099658;
 			
 			static Id()
 			{
@@ -92,7 +152,16 @@ namespace WeatherForecast
 			public const int loading = 2130903040;
 			
 			// aapt resource value: 0x7f030001
-			public const int mainWindow = 2130903041;
+			public const int loadingDialog = 2130903041;
+			
+			// aapt resource value: 0x7f030002
+			public const int mainWindow = 2130903042;
+			
+			// aapt resource value: 0x7f030003
+			public const int todayDetailsFragment = 2130903043;
+			
+			// aapt resource value: 0x7f030004
+			public const int todayFragment = 2130903044;
 			
 			static Layout()
 			{
@@ -107,11 +176,14 @@ namespace WeatherForecast
 		public partial class String
 		{
 			
+			// aapt resource value: 0x7f040002
+			public const int ApplicationName = 2130968578;
+			
 			// aapt resource value: 0x7f040001
-			public const int ApplicationName = 2130968577;
+			public const int Hello = 2130968577;
 			
 			// aapt resource value: 0x7f040000
-			public const int Hello = 2130968576;
+			public const int app_name = 2130968576;
 			
 			static String()
 			{
@@ -119,6 +191,67 @@ namespace WeatherForecast
 			}
 			
 			private String()
+			{
+			}
+		}
+		
+		public partial class Style
+		{
+			
+			// aapt resource value: 0x7f050000
+			public const int AVLoadingIndicatorView = 2131034112;
+			
+			// aapt resource value: 0x7f050001
+			public const int AVLoadingIndicatorView_Large = 2131034113;
+			
+			// aapt resource value: 0x7f050002
+			public const int AVLoadingIndicatorView_Small = 2131034114;
+			
+			static Style()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Style()
+			{
+			}
+		}
+		
+		public partial class Styleable
+		{
+			
+			public static int[] AVLoadingIndicatorView = new int[] {
+					2130771968,
+					2130771969,
+					2130771970,
+					2130771971,
+					2130771972,
+					2130771973};
+			
+			// aapt resource value: 5
+			public const int AVLoadingIndicatorView_indicatorColor = 5;
+			
+			// aapt resource value: 4
+			public const int AVLoadingIndicatorView_indicatorName = 4;
+			
+			// aapt resource value: 3
+			public const int AVLoadingIndicatorView_maxHeight = 3;
+			
+			// aapt resource value: 1
+			public const int AVLoadingIndicatorView_maxWidth = 1;
+			
+			// aapt resource value: 2
+			public const int AVLoadingIndicatorView_minHeight = 2;
+			
+			// aapt resource value: 0
+			public const int AVLoadingIndicatorView_minWidth = 0;
+			
+			static Styleable()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Styleable()
 			{
 			}
 		}

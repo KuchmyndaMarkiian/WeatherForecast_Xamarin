@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Newtonsoft.Json;
 using WeatherForecast.Infrastructure.Models.ApiModels.Common;
 
@@ -17,16 +18,22 @@ namespace WeatherForecast.Infrastructure.Models.ApiModels
         /// </summary>
         [JsonProperty("country")]
         public string Country { get; set; }
+
         /// <summary>
         /// Sunrise time, unix, UTC
         /// </summary>
         [JsonProperty("sunrise")]
         public int Sunrise { get; set; }
+
+        public string SunriseHour=>new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc).AddMilliseconds(Sunrise*1000).ToShortTimeString(); 
+        
+
         /// <summary>
         /// Sunset time, unix, UTC
         /// </summary>
         [JsonProperty("sunset")]
         public int Sunset { get; set; }
+        public string SunsetHour => new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc).AddMilliseconds(Sunset * 1000).ToShortTimeString();
     }
 
     public class CityCurrrentWeather

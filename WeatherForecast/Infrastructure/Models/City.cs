@@ -15,7 +15,7 @@ namespace WeatherForecast.Infrastructure.Models
         public string CountryCode { get; set; }
         [JsonProperty("coord")]
         public Coord Coord { get; set; }
-        public override string ToString() => $"{Id} {Name},{CountryCode} Lon:{Coord.Longtitude} Lat:{Coord.Latitude}";
+        public override string ToString() => $"{Name},{CountryCode}";
         
 
         public int CompareTo(City other)

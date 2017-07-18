@@ -7,15 +7,17 @@ using Android.Content;
 using Android.OS;
 using Android.Views;
 using Android.Widget;
+using Com.Wang.Avi;
 using WeatherForecast.Infrastructure;
+using WeatherForecast.Infrastructure.Helpers;
 using WeatherForecast.Infrastructure.Models;
 
-namespace WeatherForecast.Activities
+namespace WeatherForecast.Views.Activities
 {
     [Activity(Label = "Weather Forecast", MainLauncher = true)]
     public class LoadingActivity : Activity
     {
-        private ProgressBar _progressDialog;
+        private Dialog _progressDialog;
         private LinearLayout _searchBox;
         private AutoCompleteTextView _autoCompleteTextView;
 
@@ -28,7 +30,8 @@ namespace WeatherForecast.Activities
             SetContentView(Resource.Layout.loading);
             _searchBox = FindViewById<LinearLayout>(Resource.Id.searchBox);
             _autoCompleteTextView = FindViewById<AutoCompleteTextView>(Resource.Id.autocompleteView);
-            _progressDialog = FindViewById<ProgressBar>(Resource.Id.loadingProgressBar);
+            _progressDialog=new Dialog(this);
+            _progressDialog.InitializeLoadingDialog();
             FindViewById<Button>(Resource.Id.loadingNextButton).Click += (sender, args) =>
             {
                 var typed = _autoCompleteTextView.Text;
@@ -39,16 +42,13 @@ namespace WeatherForecast.Activities
                 Finish();
                 StartActivity(intent);
             };
-
-            _progressDialog.Indeterminate = true;
-            _progressDialog.SetProgress(0, true);
-            _progressDialog.Max = 100;
-            _progressDialog.Visibility = ViewStates.Visible;
-            _autoCompleteTextView.TextChanged += (sender, args) =>
+            _autoCompleteTextView.Text = "Lviv,UA";
+            _autoCompleteTextView.AfterTextChanged += (sender, args) =>
             {
                 if (sender is AutoCompleteTextView view)
                 {
                     string typed = view.Text;
+                    //TODO: Need store in memory.
                     view.Adapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleDropDownItem1Line,
                         _cities.AsParallel()
                             .Where(w => w.Name.ToLowerInvariant().Contains(typed.ToLowerInvariant()))
@@ -61,17 +61,14 @@ namespace WeatherForecast.Activities
         protected override void OnResume()
         {
             base.OnResume();
+            _progressDialog.Show();
             Task.Run(() =>
             {
-                int i = 0;
-                while (!_cancellationTokenSource.Token.IsCancellationRequested)
-                {
-                    _progressDialog.SetProgress(i++ % 100, true);
-                }
+                while (!_cancellationTokenSource.Token.IsCancellationRequested) ;
                 RunOnUiThread(() =>
                 {
+                    _progressDialog.Dismiss();
                     _searchBox.Visibility = ViewStates.Visible;
-                    _progressDialog.Visibility = ViewStates.Invisible;
                 });
             });
 
