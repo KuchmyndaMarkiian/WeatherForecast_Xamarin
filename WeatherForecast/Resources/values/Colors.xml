@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <item name="primaryDarkBlue" type="color">#afc2cb</item>
+  <item name="primaryBlue" type="color">#e1f5fe</item>
+  <item name="primaryWhite" type="color">#fafafa</item>
+  <item name="primaryBlack" type="color">#292929</item>
+</resources>

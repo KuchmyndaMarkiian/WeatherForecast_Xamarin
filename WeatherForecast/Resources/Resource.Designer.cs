@@ -28,26 +28,258 @@ namespace WeatherForecast
 		{
 		}
 		
+		public partial class Animation
+		{
+			
+			// aapt resource value: 0x7f040000
+			public const int drawer_slide_in_top = 2130968576;
+			
+			// aapt resource value: 0x7f040001
+			public const int drawer_slide_out_top = 2130968577;
+			
+			static Animation()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Animation()
+			{
+			}
+		}
+		
 		public partial class Attribute
 		{
 			
-			// aapt resource value: 0x7f010005
-			public const int indicatorColor = 2130771973;
+			// aapt resource value: 0x7f010041
+			public const int AreaSeriesStyle = 2130772033;
 			
-			// aapt resource value: 0x7f010004
-			public const int indicatorName = 2130771972;
+			// aapt resource value: 0x7f010035
+			public const int AxisStyle = 2130772021;
+			
+			// aapt resource value: 0x7f01003d
+			public const int BarSeriesStyle = 2130772029;
+			
+			// aapt resource value: 0x7f010036
+			public const int CartesianAxisStyle = 2130772022;
+			
+			// aapt resource value: 0x7f010045
+			public const int CartesianCustomAnnotationStyle = 2130772037;
+			
+			// aapt resource value: 0x7f010044
+			public const int CartesianPlotBandAnnotationStyle = 2130772036;
+			
+			// aapt resource value: 0x7f010043
+			public const int CartesianStrokedAnnotationStyle = 2130772035;
+			
+			// aapt resource value: 0x7f010037
+			public const int CategoricalAxisStyle = 2130772023;
+			
+			// aapt resource value: 0x7f01003f
+			public const int CategoricalSeriesStyle = 2130772031;
+			
+			// aapt resource value: 0x7f010040
+			public const int CategoricalStrokedSeriesStyle = 2130772032;
+			
+			// aapt resource value: 0x7f010042
+			public const int ChartAnnotationStyle = 2130772034;
+			
+			// aapt resource value: 0x7f01003b
+			public const int ChartSeriesStyle = 2130772027;
+			
+			// aapt resource value: 0x7f010038
+			public const int DateTimeCategoricalAxisStyle = 2130772024;
+			
+			// aapt resource value: 0x7f010039
+			public const int DateTimeContinuousAxisStyle = 2130772025;
+			
+			// aapt resource value: 0x7f01003c
+			public const int LineAxisStyle = 2130772028;
+			
+			// aapt resource value: 0x7f01003a
+			public const int RadChartBaseStyle = 2130772026;
+			
+			// aapt resource value: 0x7f01003e
+			public const int RangeBarSeriesStyle = 2130772030;
+			
+			// aapt resource value: 0x7f010046
+			public const int TestBarSeriesStyle = 2130772038;
+			
+			// aapt resource value: 0x7f010016
+			public const int applyDefaultPalette = 2130771990;
+			
+			// aapt resource value: 0x7f010013
+			public const int areBarsRounded = 2130771987;
+			
+			// aapt resource value: 0x7f010022
+			public const int axisLabelFitMode = 2130772002;
+			
+			// aapt resource value: 0x7f01001f
+			public const int axisLastLabelVisibility = 2130771999;
+			
+			// aapt resource value: 0x7f010023
+			public const int axisTitle = 2130772003;
+			
+			// aapt resource value: 0x7f010018
+			public const int chartZoom = 2130771992;
+			
+			// aapt resource value: 0x7f01001a
+			public const int clipToBounds = 2130771994;
+			
+			// aapt resource value: 0x7f010008
+			public const int clipToPlotArea = 2130771976;
+			
+			// aapt resource value: 0x7f01001d
+			public const int combineMode = 2130771997;
+			
+			// aapt resource value: 0x7f010032
+			public const int content = 2130772018;
+			
+			// aapt resource value: 0x7f01002a
+			public const int dateFormat = 2130772010;
+			
+			// aapt resource value: 0x7f01002b
+			public const int dateTimeComponent = 2130772011;
+			
+			// aapt resource value: 0x7f01001b
+			public const int emptyContent = 2130771995;
+			
+			// aapt resource value: 0x7f010006
+			public const int fillColor = 2130771974;
 			
 			// aapt resource value: 0x7f010003
-			public const int maxHeight = 2130771971;
+			public const int fillViewport = 2130771971;
 			
-			// aapt resource value: 0x7f010001
-			public const int maxWidth = 2130771969;
+			// aapt resource value: 0x7f01000a
+			public const int gapLength = 2130771978;
+			
+			// aapt resource value: 0x7f010033
+			public const int horizontalAlignment = 2130772019;
+			
+			// aapt resource value: 0x7f010028
+			public const int horizontalLocation = 2130772008;
+			
+			// aapt resource value: 0x7f010030
+			public const int horizontalOffset = 2130772016;
+			
+			// aapt resource value: 0x7f01004c
+			public const int indicatorColor = 2130772044;
+			
+			// aapt resource value: 0x7f01004b
+			public const int indicatorName = 2130772043;
+			
+			// aapt resource value: 0x7f01002f
+			public const int label = 2130772015;
+			
+			// aapt resource value: 0x7f01000c
+			public const int labelColor = 2130771980;
+			
+			// aapt resource value: 0x7f010010
+			public const int labelFont = 2130771984;
+			
+			// aapt resource value: 0x7f010011
+			public const int labelFontStyle = 2130771985;
+			
+			// aapt resource value: 0x7f010015
+			public const int labelFormat = 2130771989;
+			
+			// aapt resource value: 0x7f010025
+			public const int labelInterval = 2130772005;
+			
+			// aapt resource value: 0x7f01000e
+			public const int labelMargin = 2130771982;
+			
+			// aapt resource value: 0x7f010021
+			public const int labelOffset = 2130772001;
+			
+			// aapt resource value: 0x7f01001e
+			public const int labelRotationAngle = 2130771998;
+			
+			// aapt resource value: 0x7f01000d
+			public const int labelSize = 2130771981;
+			
+			// aapt resource value: 0x7f010026
+			public const int lineColor = 2130772006;
+			
+			// aapt resource value: 0x7f01000f
+			public const int lineThickness = 2130771983;
+			
+			// aapt resource value: 0x7f01002d
+			public const int majorStep = 2130772013;
+			
+			// aapt resource value: 0x7f01002e
+			public const int majorStepUnit = 2130772014;
+			
+			// aapt resource value: 0x7f010027
+			public const int majorTickInterval = 2130772007;
+			
+			// aapt resource value: 0x7f010020
+			public const int majorTickOffset = 2130772000;
+			
+			// aapt resource value: 0x7f01004a
+			public const int maxHeight = 2130772042;
+			
+			// aapt resource value: 0x7f010048
+			public const int maxWidth = 2130772040;
+			
+			// aapt resource value: 0x7f010019
+			public const int maxZoom = 2130771993;
+			
+			// aapt resource value: 0x7f01002c
+			public const int maximumTicks = 2130772012;
+			
+			// aapt resource value: 0x7f010049
+			public const int minHeight = 2130772041;
+			
+			// aapt resource value: 0x7f010047
+			public const int minWidth = 2130772039;
+			
+			// aapt resource value: 0x7f01001c
+			public const int palette = 2130771996;
+			
+			// aapt resource value: 0x7f010017
+			public const int pan = 2130771991;
+			
+			// aapt resource value: 0x7f01000b
+			public const int plotMode = 2130771979;
 			
 			// aapt resource value: 0x7f010002
-			public const int minHeight = 2130771970;
+			public const int pointerFill = 2130771970;
+			
+			// aapt resource value: 0x7f010001
+			public const int pointerMargin = 2130771969;
 			
 			// aapt resource value: 0x7f010000
-			public const int minWidth = 2130771968;
+			public const int pointerSize = 2130771968;
+			
+			// aapt resource value: 0x7f010005
+			public const int radScrollViewStyle = 2130771973;
+			
+			// aapt resource value: 0x7f010014
+			public const int roundBarsRadius = 2130771988;
+			
+			// aapt resource value: 0x7f010004
+			public const int scrollMode = 2130771972;
+			
+			// aapt resource value: 0x7f010009
+			public const int showLabels = 2130771977;
+			
+			// aapt resource value: 0x7f010007
+			public const int strokeColor = 2130771975;
+			
+			// aapt resource value: 0x7f010012
+			public const int strokeWidth = 2130771986;
+			
+			// aapt resource value: 0x7f010024
+			public const int tickThickness = 2130772004;
+			
+			// aapt resource value: 0x7f010034
+			public const int verticalAlignment = 2130772020;
+			
+			// aapt resource value: 0x7f010029
+			public const int verticalLocation = 2130772009;
+			
+			// aapt resource value: 0x7f010031
+			public const int verticalOffset = 2130772017;
 			
 			static Attribute()
 			{
@@ -59,11 +291,76 @@ namespace WeatherForecast
 			}
 		}
 		
+		public partial class Color
+		{
+			
+			// aapt resource value: 0x7f080001
+			public const int black = 2131230721;
+			
+			// aapt resource value: 0x7f080006
+			public const int primaryBlack = 2131230726;
+			
+			// aapt resource value: 0x7f080004
+			public const int primaryBlue = 2131230724;
+			
+			// aapt resource value: 0x7f080003
+			public const int primaryDarkBlue = 2131230723;
+			
+			// aapt resource value: 0x7f080005
+			public const int primaryWhite = 2131230725;
+			
+			// aapt resource value: 0x7f080002
+			public const int red = 2131230722;
+			
+			// aapt resource value: 0x7f080000
+			public const int white = 2131230720;
+			
+			static Color()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Color()
+			{
+			}
+		}
+		
+		public partial class Dimension
+		{
+			
+			// aapt resource value: 0x7f060000
+			public const int legend_stroke_width = 2131099648;
+			
+			// aapt resource value: 0x7f060001
+			public const int trackball_indicator_radius = 2131099649;
+			
+			static Dimension()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Dimension()
+			{
+			}
+		}
+		
 		public partial class Drawable
 		{
 			
 			// aapt resource value: 0x7f020000
-			public const int Icon = 2130837504;
+			public const int circle = 2130837504;
+			
+			// aapt resource value: 0x7f020001
+			public const int hamburger = 2130837505;
+			
+			// aapt resource value: 0x7f020002
+			public const int hmb = 2130837506;
+			
+			// aapt resource value: 0x7f020003
+			public const int Icon = 2130837507;
+			
+			// aapt resource value: 0x7f020004
+			public const int tab_view_popup_background = 2130837508;
 			
 			static Drawable()
 			{
@@ -78,62 +375,254 @@ namespace WeatherForecast
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f060001
-			public const int autocompleteView = 2131099649;
+			// aapt resource value: 0x7f0a0002
+			public const int BetweenTicks = 2131361794;
 			
-			// aapt resource value: 0x7f060011
-			public const int cityHeader = 2131099665;
+			// aapt resource value: 0x7f0a0010
+			public const int Bottom = 2131361808;
 			
-			// aapt resource value: 0x7f060007
-			public const int cloudinessHeader = 2131099655;
+			// aapt resource value: 0x7f0a0009
+			public const int Clip = 2131361801;
 			
-			// aapt resource value: 0x7f06000f
-			public const int currentTemperture = 2131099663;
+			// aapt resource value: 0x7f0a0005
+			public const int Cluster = 2131361797;
 			
-			// aapt resource value: 0x7f060008
-			public const int humidityHeader = 2131099656;
+			// aapt resource value: 0x7f0a0012
+			public const int Date = 2131361810;
 			
-			// aapt resource value: 0x7f06000e
-			public const int imageView1 = 2131099662;
+			// aapt resource value: 0x7f0a0013
+			public const int Day = 2131361811;
 			
-			// aapt resource value: 0x7f060003
-			public const int indicator = 2131099651;
+			// aapt resource value: 0x7f0a0014
+			public const int DayOfWeek = 2131361812;
 			
-			// aapt resource value: 0x7f060002
-			public const int loadingNextButton = 2131099650;
+			// aapt resource value: 0x7f0a0015
+			public const int DayOfYear = 2131361813;
 			
-			// aapt resource value: 0x7f060004
-			public const int mainWindow = 2131099652;
+			// aapt resource value: 0x7f0a000a
+			public const int Hidden = 2131361802;
 			
-			// aapt resource value: 0x7f060012
-			public const int openMap = 2131099666;
+			// aapt resource value: 0x7f0a0016
+			public const int Hour = 2131361814;
 			
-			// aapt resource value: 0x7f060009
-			public const int pressureHeader = 2131099657;
+			// aapt resource value: 0x7f0a000e
+			public const int Left = 2131361806;
 			
-			// aapt resource value: 0x7f060010
-			public const int rangeTemperture = 2131099664;
+			// aapt resource value: 0x7f0a0017
+			public const int Millisecond = 2131361815;
 			
-			// aapt resource value: 0x7f060000
-			public const int searchBox = 2131099648;
+			// aapt resource value: 0x7f0a0018
+			public const int Minute = 2131361816;
 			
-			// aapt resource value: 0x7f06000c
-			public const int sunriseHeader = 2131099660;
+			// aapt resource value: 0x7f0a0019
+			public const int Month = 2131361817;
 			
-			// aapt resource value: 0x7f06000d
-			public const int sunsetHeader = 2131099661;
+			// aapt resource value: 0x7f0a000c
+			public const int Multiline = 2131361804;
 			
-			// aapt resource value: 0x7f060006
-			public const int todayDetailFragmentContainer = 2131099654;
+			// aapt resource value: 0x7f0a0006
+			public const int None = 2131361798;
 			
-			// aapt resource value: 0x7f060005
-			public const int todayFragmentContainer = 2131099653;
+			// aapt resource value: 0x7f0a0003
+			public const int OnTicks = 2131361795;
 			
-			// aapt resource value: 0x7f06000b
-			public const int windDirectionHeader = 2131099659;
+			// aapt resource value: 0x7f0a0004
+			public const int OnTicksPadded = 2131361796;
 			
-			// aapt resource value: 0x7f06000a
-			public const int windSpeedHeader = 2131099658;
+			// aapt resource value: 0x7f0a001a
+			public const int Quarter = 2131361818;
+			
+			// aapt resource value: 0x7f0a000f
+			public const int Right = 2131361807;
+			
+			// aapt resource value: 0x7f0a000d
+			public const int Rotate = 2131361805;
+			
+			// aapt resource value: 0x7f0a001b
+			public const int Second = 2131361819;
+			
+			// aapt resource value: 0x7f0a0007
+			public const int Stack = 2131361799;
+			
+			// aapt resource value: 0x7f0a0008
+			public const int Stack100 = 2131361800;
+			
+			// aapt resource value: 0x7f0a001c
+			public const int TimeOfDay = 2131361820;
+			
+			// aapt resource value: 0x7f0a0011
+			public const int Top = 2131361809;
+			
+			// aapt resource value: 0x7f0a000b
+			public const int Visible = 2131361803;
+			
+			// aapt resource value: 0x7f0a001d
+			public const int Week = 2131361821;
+			
+			// aapt resource value: 0x7f0a001e
+			public const int Year = 2131361822;
+			
+			// aapt resource value: 0x7f0a002d
+			public const int areaText = 2131361837;
+			
+			// aapt resource value: 0x7f0a0036
+			public const int autocompleteView = 2131361846;
+			
+			// aapt resource value: 0x7f0a0022
+			public const int bottom = 2131361826;
+			
+			// aapt resource value: 0x7f0a001f
+			public const int center = 2131361823;
+			
+			// aapt resource value: 0x7f0a0052
+			public const int chart_data_point_content_container = 2131361874;
+			
+			// aapt resource value: 0x7f0a003f
+			public const int chart_layout_root = 2131361855;
+			
+			// aapt resource value: 0x7f0a0025
+			public const int chart_tooltip_category = 2131361829;
+			
+			// aapt resource value: 0x7f0a0051
+			public const int chart_tooltip_pointer = 2131361873;
+			
+			// aapt resource value: 0x7f0a0026
+			public const int chart_tooltip_value = 2131361830;
+			
+			// aapt resource value: 0x7f0a002e
+			public const int chart_trackball_category = 2131361838;
+			
+			// aapt resource value: 0x7f0a0030
+			public const int chart_trackball_value = 2131361840;
+			
+			// aapt resource value: 0x7f0a004f
+			public const int cityHeader = 2131361871;
+			
+			// aapt resource value: 0x7f0a0029
+			public const int closeText = 2131361833;
+			
+			// aapt resource value: 0x7f0a0045
+			public const int cloudinessHeader = 2131361861;
+			
+			// aapt resource value: 0x7f0a004d
+			public const int currentTemperture = 2131361869;
+			
+			// aapt resource value: 0x7f0a0040
+			public const int emptyContent = 2131361856;
+			
+			// aapt resource value: 0x7f0a003c
+			public const int graphFragmentContainer = 2131361852;
+			
+			// aapt resource value: 0x7f0a0032
+			public const int graphView = 2131361842;
+			
+			// aapt resource value: 0x7f0a0027
+			public const int highText = 2131361831;
+			
+			// aapt resource value: 0x7f0a0000
+			public const int horizontal = 2131361792;
+			
+			// aapt resource value: 0x7f0a0046
+			public const int humidityHeader = 2131361862;
+			
+			// aapt resource value: 0x7f0a0031
+			public const int imageView = 2131361841;
+			
+			// aapt resource value: 0x7f0a004c
+			public const int imageView1 = 2131361868;
+			
+			// aapt resource value: 0x7f0a0038
+			public const int indicator = 2131361848;
+			
+			// aapt resource value: 0x7f0a0020
+			public const int left = 2131361824;
+			
+			// aapt resource value: 0x7f0a0033
+			public const int legendItemIconView = 2131361843;
+			
+			// aapt resource value: 0x7f0a0034
+			public const int legendItemTitleView = 2131361844;
+			
+			// aapt resource value: 0x7f0a0042
+			public const int legendRecyclerView = 2131361858;
+			
+			// aapt resource value: 0x7f0a0037
+			public const int loadingNextButton = 2131361847;
+			
+			// aapt resource value: 0x7f0a002a
+			public const int lowText = 2131361834;
+			
+			// aapt resource value: 0x7f0a0039
+			public const int mainWindow = 2131361849;
+			
+			// aapt resource value: 0x7f0a003d
+			public const int navItemsLayout = 2131361853;
+			
+			// aapt resource value: 0x7f0a003e
+			public const int navigationItemText = 2131361854;
+			
+			// aapt resource value: 0x7f0a0050
+			public const int openMap = 2131361872;
+			
+			// aapt resource value: 0x7f0a0028
+			public const int openText = 2131361832;
+			
+			// aapt resource value: 0x7f0a0047
+			public const int pressureHeader = 2131361863;
+			
+			// aapt resource value: 0x7f0a004e
+			public const int rangeTemperture = 2131361870;
+			
+			// aapt resource value: 0x7f0a0041
+			public const int renderSurface = 2131361857;
+			
+			// aapt resource value: 0x7f0a0021
+			public const int right = 2131361825;
+			
+			// aapt resource value: 0x7f0a0035
+			public const int searchBox = 2131361845;
+			
+			// aapt resource value: 0x7f0a004a
+			public const int sunriseHeader = 2131361866;
+			
+			// aapt resource value: 0x7f0a004b
+			public const int sunsetHeader = 2131361867;
+			
+			// aapt resource value: 0x7f0a0044
+			public const int tabItemImageView = 2131361860;
+			
+			// aapt resource value: 0x7f0a0043
+			public const int tabItemTextView = 2131361859;
+			
+			// aapt resource value: 0x7f0a003b
+			public const int todayDetailFragmentContainer = 2131361851;
+			
+			// aapt resource value: 0x7f0a003a
+			public const int todayFragmentContainer = 2131361850;
+			
+			// aapt resource value: 0x7f0a0024
+			public const int tooltip_content_container = 2131361828;
+			
+			// aapt resource value: 0x7f0a0023
+			public const int top = 2131361827;
+			
+			// aapt resource value: 0x7f0a002f
+			public const int trackball_points_list = 2131361839;
+			
+			// aapt resource value: 0x7f0a0001
+			public const int vertical = 2131361793;
+			
+			// aapt resource value: 0x7f0a0049
+			public const int windDirectionHeader = 2131361865;
+			
+			// aapt resource value: 0x7f0a0048
+			public const int windSpeedHeader = 2131361864;
+			
+			// aapt resource value: 0x7f0a002b
+			public const int xText = 2131361835;
+			
+			// aapt resource value: 0x7f0a002c
+			public const int yText = 2131361836;
 			
 			static Id()
 			{
@@ -149,19 +638,76 @@ namespace WeatherForecast
 		{
 			
 			// aapt resource value: 0x7f030000
-			public const int loading = 2130903040;
+			public const int default_tooltip_content = 2130903040;
 			
 			// aapt resource value: 0x7f030001
-			public const int loadingDialog = 2130903041;
+			public const int default_tooltip_ohlc_content = 2130903041;
 			
 			// aapt resource value: 0x7f030002
-			public const int mainWindow = 2130903042;
+			public const int default_tooltip_scatter_bubble_content = 2130903042;
 			
 			// aapt resource value: 0x7f030003
-			public const int todayDetailsFragment = 2130903043;
+			public const int default_tooltip_scatter_content = 2130903043;
 			
 			// aapt resource value: 0x7f030004
-			public const int todayFragment = 2130903044;
+			public const int default_trackball_content = 2130903044;
+			
+			// aapt resource value: 0x7f030005
+			public const int default_trackball_item_content = 2130903045;
+			
+			// aapt resource value: 0x7f030006
+			public const int drawer_blur_fade_layer = 2130903046;
+			
+			// aapt resource value: 0x7f030007
+			public const int graphDailyFragment = 2130903047;
+			
+			// aapt resource value: 0x7f030008
+			public const int legend_item_view = 2130903048;
+			
+			// aapt resource value: 0x7f030009
+			public const int loading = 2130903049;
+			
+			// aapt resource value: 0x7f03000a
+			public const int loadingDialog = 2130903050;
+			
+			// aapt resource value: 0x7f03000b
+			public const int mainWindow = 2130903051;
+			
+			// aapt resource value: 0x7f03000c
+			public const int navigation_drawer_content = 2130903052;
+			
+			// aapt resource value: 0x7f03000d
+			public const int navigation_item_view = 2130903053;
+			
+			// aapt resource value: 0x7f03000e
+			public const int ohlc_trackball_item_content = 2130903054;
+			
+			// aapt resource value: 0x7f03000f
+			public const int radchartbase = 2130903055;
+			
+			// aapt resource value: 0x7f030010
+			public const int radlegendcontrol = 2130903056;
+			
+			// aapt resource value: 0x7f030011
+			public const int range_trackball_item_content = 2130903057;
+			
+			// aapt resource value: 0x7f030012
+			public const int tab_item_view = 2130903058;
+			
+			// aapt resource value: 0x7f030013
+			public const int todayDetailsFragment = 2130903059;
+			
+			// aapt resource value: 0x7f030014
+			public const int todayFragment = 2130903060;
+			
+			// aapt resource value: 0x7f030015
+			public const int tooltip_container = 2130903061;
+			
+			// aapt resource value: 0x7f030016
+			public const int trackball_container = 2130903062;
+			
+			// aapt resource value: 0x7f030017
+			public const int trial_message = 2130903063;
 			
 			static Layout()
 			{
@@ -176,14 +722,20 @@ namespace WeatherForecast
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f040002
-			public const int ApplicationName = 2130968578;
+			// aapt resource value: 0x7f090004
+			public const int ApplicationName = 2131296260;
 			
-			// aapt resource value: 0x7f040001
-			public const int Hello = 2130968577;
+			// aapt resource value: 0x7f090003
+			public const int Hello = 2131296259;
 			
-			// aapt resource value: 0x7f040000
-			public const int app_name = 2130968576;
+			// aapt resource value: 0x7f090002
+			public const int app_name = 2131296258;
+			
+			// aapt resource value: 0x7f090000
+			public const int trial_message = 2131296256;
+			
+			// aapt resource value: 0x7f090001
+			public const int trial_message_caption = 2131296257;
 			
 			static String()
 			{
@@ -198,14 +750,80 @@ namespace WeatherForecast
 		public partial class Style
 		{
 			
-			// aapt resource value: 0x7f050000
-			public const int AVLoadingIndicatorView = 2131034112;
+			// aapt resource value: 0x7f070016
+			public const int AVLoadingIndicatorView = 2131165206;
 			
-			// aapt resource value: 0x7f050001
-			public const int AVLoadingIndicatorView_Large = 2131034113;
+			// aapt resource value: 0x7f070017
+			public const int AVLoadingIndicatorView_Large = 2131165207;
 			
-			// aapt resource value: 0x7f050002
-			public const int AVLoadingIndicatorView_Small = 2131034114;
+			// aapt resource value: 0x7f070018
+			public const int AVLoadingIndicatorView_Small = 2131165208;
+			
+			// aapt resource value: 0x7f070002
+			public const int AxisStyle = 2131165186;
+			
+			// aapt resource value: 0x7f070005
+			public const int AxisStyle_LineAxisStyle = 2131165189;
+			
+			// aapt resource value: 0x7f07000c
+			public const int AxisStyle_LineAxisStyle_CartesianAxisStyle = 2131165196;
+			
+			// aapt resource value: 0x7f07000d
+			public const int AxisStyle_LineAxisStyle_CartesianAxisStyle_CategoricalAxisStyle = 2131165197;
+			
+			// aapt resource value: 0x7f07000e
+			public const int AxisStyle_LineAxisStyle_CartesianAxisStyle_CategoricalAxisStyle_DateTimeCategoricalAxisStyle = 2131165198;
+			
+			// aapt resource value: 0x7f07000f
+			public const int AxisStyle_LineAxisStyle_CartesianAxisStyle_CategoricalAxisStyle_TestDateTimeCategoricalAxisStyle = 2131165199;
+			
+			// aapt resource value: 0x7f070010
+			public const int AxisStyle_LineAxisStyle_CartesianAxisStyle_DateTimeContinuousAxisStyle = 2131165200;
+			
+			// aapt resource value: 0x7f070011
+			public const int ChartAnnotationStyle = 2131165201;
+			
+			// aapt resource value: 0x7f070014
+			public const int ChartAnnotationStyle_CartesianCustomAnnotationStyle = 2131165204;
+			
+			// aapt resource value: 0x7f070012
+			public const int ChartAnnotationStyle_CartesianStrokedAnnotationStyle = 2131165202;
+			
+			// aapt resource value: 0x7f070013
+			public const int ChartAnnotationStyle_CartesianStrokedAnnotationStyle_CartesianPlotBandAnnotationStyle = 2131165203;
+			
+			// aapt resource value: 0x7f070004
+			public const int ChartSeriesStyle = 2131165188;
+			
+			// aapt resource value: 0x7f070009
+			public const int ChartSeriesStyle_CategoricalSeriesStyle = 2131165193;
+			
+			// aapt resource value: 0x7f070006
+			public const int ChartSeriesStyle_CategoricalSeriesStyle_BarSeriesStyle = 2131165190;
+			
+			// aapt resource value: 0x7f07000a
+			public const int ChartSeriesStyle_CategoricalSeriesStyle_CategoricalStrokedSeriesStyle = 2131165194;
+			
+			// aapt resource value: 0x7f07000b
+			public const int ChartSeriesStyle_CategoricalSeriesStyle_CategoricalStrokedSeriesStyle_AreaSeriesStyle = 2131165195;
+			
+			// aapt resource value: 0x7f070007
+			public const int ChartSeriesStyle_CategoricalSeriesStyle_RangeBarSeriesStyle = 2131165191;
+			
+			// aapt resource value: 0x7f070008
+			public const int ChartSeriesStyle_CategoricalSeriesStyle_TestBarSeriesStyle = 2131165192;
+			
+			// aapt resource value: 0x7f070003
+			public const int RadChartBaseStyle = 2131165187;
+			
+			// aapt resource value: 0x7f070000
+			public const int RadScrollViewStyle = 2131165184;
+			
+			// aapt resource value: 0x7f070001
+			public const int RadScrollViewTheme = 2131165185;
+			
+			// aapt resource value: 0x7f070015
+			public const int Theme_ChartTheme = 2131165205;
 			
 			static Style()
 			{
@@ -217,16 +835,41 @@ namespace WeatherForecast
 			}
 		}
 		
+		public partial class Xml
+		{
+			
+			// aapt resource value: 0x7f050000
+			public const int chart_palettes_dark_selected = 2131034112;
+			
+			// aapt resource value: 0x7f050001
+			public const int chart_palettes_default_dark = 2131034113;
+			
+			// aapt resource value: 0x7f050002
+			public const int chart_palettes_default_light = 2131034114;
+			
+			// aapt resource value: 0x7f050003
+			public const int chart_palettes_light_selected = 2131034115;
+			
+			static Xml()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Xml()
+			{
+			}
+		}
+		
 		public partial class Styleable
 		{
 			
 			public static int[] AVLoadingIndicatorView = new int[] {
-					2130771968,
-					2130771969,
-					2130771970,
-					2130771971,
-					2130771972,
-					2130771973};
+					2130772039,
+					2130772040,
+					2130772041,
+					2130772042,
+					2130772043,
+					2130772044};
 			
 			// aapt resource value: 5
 			public const int AVLoadingIndicatorView_indicatorColor = 5;
@@ -245,6 +888,408 @@ namespace WeatherForecast
 			
 			// aapt resource value: 0
 			public const int AVLoadingIndicatorView_minWidth = 0;
+			
+			public static int[] AreaSeries = new int[] {
+					2130771974};
+			
+			// aapt resource value: 0
+			public const int AreaSeries_fillColor = 0;
+			
+			public static int[] Axis = new int[] {
+					2130771977,
+					2130771980,
+					2130771981,
+					2130771982,
+					2130771983,
+					2130771984,
+					2130771985,
+					2130771989,
+					2130771998,
+					2130771999,
+					2130772000,
+					2130772001,
+					2130772002,
+					2130772003,
+					2130772004,
+					2130772005};
+			
+			// aapt resource value: 12
+			public const int Axis_axisLabelFitMode = 12;
+			
+			// aapt resource value: 9
+			public const int Axis_axisLastLabelVisibility = 9;
+			
+			// aapt resource value: 13
+			public const int Axis_axisTitle = 13;
+			
+			// aapt resource value: 1
+			public const int Axis_labelColor = 1;
+			
+			// aapt resource value: 5
+			public const int Axis_labelFont = 5;
+			
+			// aapt resource value: 6
+			public const int Axis_labelFontStyle = 6;
+			
+			// aapt resource value: 7
+			public const int Axis_labelFormat = 7;
+			
+			// aapt resource value: 15
+			public const int Axis_labelInterval = 15;
+			
+			// aapt resource value: 3
+			public const int Axis_labelMargin = 3;
+			
+			// aapt resource value: 11
+			public const int Axis_labelOffset = 11;
+			
+			// aapt resource value: 8
+			public const int Axis_labelRotationAngle = 8;
+			
+			// aapt resource value: 2
+			public const int Axis_labelSize = 2;
+			
+			// aapt resource value: 4
+			public const int Axis_lineThickness = 4;
+			
+			// aapt resource value: 10
+			public const int Axis_majorTickOffset = 10;
+			
+			// aapt resource value: 0
+			public const int Axis_showLabels = 0;
+			
+			// aapt resource value: 14
+			public const int Axis_tickThickness = 14;
+			
+			public static int[] BarSeries = new int[] {
+					2130771974,
+					2130771975,
+					2130771986,
+					2130771987,
+					2130771988};
+			
+			// aapt resource value: 3
+			public const int BarSeries_areBarsRounded = 3;
+			
+			// aapt resource value: 0
+			public const int BarSeries_fillColor = 0;
+			
+			// aapt resource value: 4
+			public const int BarSeries_roundBarsRadius = 4;
+			
+			// aapt resource value: 1
+			public const int BarSeries_strokeColor = 1;
+			
+			// aapt resource value: 2
+			public const int BarSeries_strokeWidth = 2;
+			
+			public static int[] CartesianAxis = new int[] {
+					2130772008,
+					2130772009};
+			
+			// aapt resource value: 0
+			public const int CartesianAxis_horizontalLocation = 0;
+			
+			// aapt resource value: 1
+			public const int CartesianAxis_verticalLocation = 1;
+			
+			public static int[] CartesianCustomAnnotation = new int[] {
+					2130772016,
+					2130772017,
+					2130772018,
+					2130772019,
+					2130772020};
+			
+			// aapt resource value: 2
+			public const int CartesianCustomAnnotation_content = 2;
+			
+			// aapt resource value: 3
+			public const int CartesianCustomAnnotation_horizontalAlignment = 3;
+			
+			// aapt resource value: 0
+			public const int CartesianCustomAnnotation_horizontalOffset = 0;
+			
+			// aapt resource value: 4
+			public const int CartesianCustomAnnotation_verticalAlignment = 4;
+			
+			// aapt resource value: 1
+			public const int CartesianCustomAnnotation_verticalOffset = 1;
+			
+			public static int[] CartesianPlotBandAnnotation = new int[] {
+					2130771974};
+			
+			// aapt resource value: 0
+			public const int CartesianPlotBandAnnotation_fillColor = 0;
+			
+			public static int[] CartesianStrokedAnnotation = new int[] {
+					2130771975,
+					2130771986,
+					2130772015};
+			
+			// aapt resource value: 2
+			public const int CartesianStrokedAnnotation_label = 2;
+			
+			// aapt resource value: 0
+			public const int CartesianStrokedAnnotation_strokeColor = 0;
+			
+			// aapt resource value: 1
+			public const int CartesianStrokedAnnotation_strokeWidth = 1;
+			
+			public static int[] CategoricalAxis = new int[] {
+					2130771978,
+					2130771979,
+					2130772007};
+			
+			// aapt resource value: 0
+			public const int CategoricalAxis_gapLength = 0;
+			
+			// aapt resource value: 2
+			public const int CategoricalAxis_majorTickInterval = 2;
+			
+			// aapt resource value: 1
+			public const int CategoricalAxis_plotMode = 1;
+			
+			public static int[] CategoricalSeries = new int[] {
+					2130771997};
+			
+			// aapt resource value: 0
+			public const int CategoricalSeries_combineMode = 0;
+			
+			public static int[] CategoricalStrokedSeries = new int[] {
+					2130771975,
+					2130771986};
+			
+			// aapt resource value: 0
+			public const int CategoricalStrokedSeries_strokeColor = 0;
+			
+			// aapt resource value: 1
+			public const int CategoricalStrokedSeries_strokeWidth = 1;
+			
+			public static int[] ChartAnnotation = new int[] {
+					2130771976};
+			
+			// aapt resource value: 0
+			public const int ChartAnnotation_clipToPlotArea = 0;
+			
+			public static int[] ChartSeries = new int[] {
+					2130771976,
+					2130771977,
+					2130771980,
+					2130771981,
+					2130771984,
+					2130771985,
+					2130771989};
+			
+			// aapt resource value: 0
+			public const int ChartSeries_clipToPlotArea = 0;
+			
+			// aapt resource value: 2
+			public const int ChartSeries_labelColor = 2;
+			
+			// aapt resource value: 4
+			public const int ChartSeries_labelFont = 4;
+			
+			// aapt resource value: 5
+			public const int ChartSeries_labelFontStyle = 5;
+			
+			// aapt resource value: 6
+			public const int ChartSeries_labelFormat = 6;
+			
+			// aapt resource value: 3
+			public const int ChartSeries_labelSize = 3;
+			
+			// aapt resource value: 1
+			public const int ChartSeries_showLabels = 1;
+			
+			public static int[] ChartTheme = new int[] {
+					2130772021,
+					2130772022,
+					2130772023,
+					2130772024,
+					2130772025,
+					2130772026,
+					2130772027,
+					2130772028,
+					2130772029,
+					2130772030,
+					2130772031,
+					2130772032,
+					2130772033,
+					2130772034,
+					2130772035,
+					2130772036,
+					2130772037,
+					2130772038};
+			
+			// aapt resource value: 12
+			public const int ChartTheme_AreaSeriesStyle = 12;
+			
+			// aapt resource value: 0
+			public const int ChartTheme_AxisStyle = 0;
+			
+			// aapt resource value: 8
+			public const int ChartTheme_BarSeriesStyle = 8;
+			
+			// aapt resource value: 1
+			public const int ChartTheme_CartesianAxisStyle = 1;
+			
+			// aapt resource value: 16
+			public const int ChartTheme_CartesianCustomAnnotationStyle = 16;
+			
+			// aapt resource value: 15
+			public const int ChartTheme_CartesianPlotBandAnnotationStyle = 15;
+			
+			// aapt resource value: 14
+			public const int ChartTheme_CartesianStrokedAnnotationStyle = 14;
+			
+			// aapt resource value: 2
+			public const int ChartTheme_CategoricalAxisStyle = 2;
+			
+			// aapt resource value: 10
+			public const int ChartTheme_CategoricalSeriesStyle = 10;
+			
+			// aapt resource value: 11
+			public const int ChartTheme_CategoricalStrokedSeriesStyle = 11;
+			
+			// aapt resource value: 13
+			public const int ChartTheme_ChartAnnotationStyle = 13;
+			
+			// aapt resource value: 6
+			public const int ChartTheme_ChartSeriesStyle = 6;
+			
+			// aapt resource value: 3
+			public const int ChartTheme_DateTimeCategoricalAxisStyle = 3;
+			
+			// aapt resource value: 4
+			public const int ChartTheme_DateTimeContinuousAxisStyle = 4;
+			
+			// aapt resource value: 7
+			public const int ChartTheme_LineAxisStyle = 7;
+			
+			// aapt resource value: 5
+			public const int ChartTheme_RadChartBaseStyle = 5;
+			
+			// aapt resource value: 9
+			public const int ChartTheme_RangeBarSeriesStyle = 9;
+			
+			// aapt resource value: 17
+			public const int ChartTheme_TestBarSeriesStyle = 17;
+			
+			public static int[] DateTimeCategoricalAxis = new int[] {
+					2130772010,
+					2130772011};
+			
+			// aapt resource value: 0
+			public const int DateTimeCategoricalAxis_dateFormat = 0;
+			
+			// aapt resource value: 1
+			public const int DateTimeCategoricalAxis_dateTimeComponent = 1;
+			
+			public static int[] DateTimeContinuousAxis = new int[] {
+					2130771978,
+					2130771979,
+					2130772012,
+					2130772013,
+					2130772014};
+			
+			// aapt resource value: 0
+			public const int DateTimeContinuousAxis_gapLength = 0;
+			
+			// aapt resource value: 3
+			public const int DateTimeContinuousAxis_majorStep = 3;
+			
+			// aapt resource value: 4
+			public const int DateTimeContinuousAxis_majorStepUnit = 4;
+			
+			// aapt resource value: 2
+			public const int DateTimeContinuousAxis_maximumTicks = 2;
+			
+			// aapt resource value: 1
+			public const int DateTimeContinuousAxis_plotMode = 1;
+			
+			public static int[] LineAxis = new int[] {
+					2130772006};
+			
+			// aapt resource value: 0
+			public const int LineAxis_lineColor = 0;
+			
+			public static int[] PointerLayout = new int[] {
+					2130771968,
+					2130771969,
+					2130771970};
+			
+			// aapt resource value: 2
+			public const int PointerLayout_pointerFill = 2;
+			
+			// aapt resource value: 1
+			public const int PointerLayout_pointerMargin = 1;
+			
+			// aapt resource value: 0
+			public const int PointerLayout_pointerSize = 0;
+			
+			public static int[] RadChartViewBase = new int[] {
+					2130771991,
+					2130771992,
+					2130771993,
+					2130771994,
+					2130771995,
+					2130771996};
+			
+			// aapt resource value: 1
+			public const int RadChartViewBase_chartZoom = 1;
+			
+			// aapt resource value: 3
+			public const int RadChartViewBase_clipToBounds = 3;
+			
+			// aapt resource value: 4
+			public const int RadChartViewBase_emptyContent = 4;
+			
+			// aapt resource value: 2
+			public const int RadChartViewBase_maxZoom = 2;
+			
+			// aapt resource value: 5
+			public const int RadChartViewBase_palette = 5;
+			
+			// aapt resource value: 0
+			public const int RadChartViewBase_pan = 0;
+			
+			public static int[] RadScrollView = new int[] {
+					2130771971,
+					2130771972};
+			
+			// aapt resource value: 0
+			public const int RadScrollView_fillViewport = 0;
+			
+			// aapt resource value: 1
+			public const int RadScrollView_scrollMode = 1;
+			
+			public static int[] RadScrollViewTheme = new int[] {
+					2130771973};
+			
+			// aapt resource value: 0
+			public const int RadScrollViewTheme_radScrollViewStyle = 0;
+			
+			public static int[] RangeBarSeries = new int[] {
+					2130771974,
+					2130771975,
+					2130771986,
+					2130771987,
+					2130771988};
+			
+			// aapt resource value: 3
+			public const int RangeBarSeries_areBarsRounded = 3;
+			
+			// aapt resource value: 0
+			public const int RangeBarSeries_fillColor = 0;
+			
+			// aapt resource value: 4
+			public const int RangeBarSeries_roundBarsRadius = 4;
+			
+			// aapt resource value: 1
+			public const int RangeBarSeries_strokeColor = 1;
+			
+			// aapt resource value: 2
+			public const int RangeBarSeries_strokeWidth = 2;
 			
 			static Styleable()
 			{
