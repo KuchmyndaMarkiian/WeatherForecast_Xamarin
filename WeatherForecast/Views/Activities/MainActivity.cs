@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Android.App;
 using Android.Content;
 using Android.OS;
+using Android.Support.V7.App;
 using Android.Widget;
 using WeatherForecast.Infrastructure;
 using WeatherForecast.Infrastructure.Helpers;
@@ -15,7 +16,7 @@ using City = WeatherForecast.Infrastructure.Models.City;
 
 namespace WeatherForecast.Views.Activities
 {
-    [Activity(Label = "MainActivity")]
+    [Activity(Label = "MainActivity",Theme = "@style/NoActionBar")]
     public class MainActivity : Activity
     {
         private Dialog _progressDialog;

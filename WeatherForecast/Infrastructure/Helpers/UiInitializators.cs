@@ -24,7 +24,7 @@ namespace WeatherForecast.Infrastructure.Helpers
             dialog.Window.SetBackgroundDrawable(new ColorDrawable(Color.Transparent));
             WindowManagerLayoutParams layoutParams = new WindowManagerLayoutParams();
             layoutParams.CopyFrom(dialog.Window.Attributes);
-            layoutParams.Height = layoutParams.Width = WindowManagerLayoutParams.WrapContent;
+            layoutParams.Height = layoutParams.Width = ViewGroup.LayoutParams.WrapContent;
             dialog.Window.Attributes = layoutParams;
             var indicatorView = dialog.FindViewById<AVLoadingIndicatorView>(Resource.Id.indicator);
             indicatorView.SmoothToShow();

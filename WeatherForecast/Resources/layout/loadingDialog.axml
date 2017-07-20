@@ -11,7 +11,7 @@
         app:indicatorColor="#FF0000"
         android:layout_height="128dp"
         android:layout_width="128dp"
-        android:padding="12dp"
+        android:padding="18dp"
         style="@style/AVLoadingIndicatorView.Small"
         android:background="@drawable/circle" />
 </LinearLayout>

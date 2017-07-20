@@ -7,7 +7,6 @@ using Android.Content;
 using Android.OS;
 using Android.Views;
 using Android.Widget;
-using Com.Wang.Avi;
 using WeatherForecast.Infrastructure;
 using WeatherForecast.Infrastructure.Helpers;
 using WeatherForecast.Infrastructure.Models;
@@ -64,7 +63,9 @@ namespace WeatherForecast.Views.Activities
             _progressDialog.Show();
             Task.Run(() =>
             {
-                while (!_cancellationTokenSource.Token.IsCancellationRequested) ;
+                while (!_cancellationTokenSource.Token.IsCancellationRequested)
+                {
+                }
                 RunOnUiThread(() =>
                 {
                     _progressDialog.Dismiss();

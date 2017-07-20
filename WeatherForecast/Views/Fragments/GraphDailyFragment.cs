@@ -1,60 +1,77 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-
 using Android.App;
 using Android.Content;
-using Android.Graphics;
-using Android.Graphics.Drawables;
 using Android.OS;
-using Android.Runtime;
-using Android.Util;
 using Android.Views;
 using Android.Widget;
-using Com.Telerik.Widget.Chart.Visualization.CartesianChart;
-using Com.Telerik.Widget.Chart.Visualization.CartesianChart.Axes;
-using Com.Telerik.Widget.Chart.Visualization.CartesianChart.Series.Categorical;
-using Java.Util;
-using WeatherForecast.Infrastructure.Models.GraphBindingModels;
+using MikePhil.Charting.Charts;
+using MikePhil.Charting.Components;
+using MikePhil.Charting.Data;
+using MikePhil.Charting.Formatter;
+using MikePhil.Charting.Util;
 
 namespace WeatherForecast.Views.Fragments
 {
     public class GraphDailyFragment : Fragment
     {
-        public override void OnCreate(Bundle savedInstanceState)
+        class AxisValueFormatter : IndexAxisValueFormatter
         {
-            base.OnCreate(savedInstanceState);
+            private readonly string[] _headers;
 
+            internal AxisValueFormatter(params string[] headers) : base(headers)
+            {
+                _headers = headers;
+            }
 
-            // Create your fragment here
+            public override string GetFormattedValue(float p0, AxisBase p1)
+            {
+                return _headers[(int) p0];
+            }
         }
 
         public void InitializeFragment(List<(string, double)> points)
         {
-            ArrayList dataList = new ArrayList(points.Count);
             var activity = this.Activity;
-            RadCartesianChartView chartView = new RadCartesianChartView(activity);
-            points.ForEach(tuple => dataList.Add(new HourResult {DateTime = tuple.Item1, Temperature = tuple.Item2}));
-
-            SplineAreaSeries series = new SplineAreaSeries
+            float i = 0f;
+            var dataList = new List<Entry>();
+            points.ForEach(tuple => dataList.Add(new Entry(i++, (float) tuple.Item2)));
+            var dataSet = new LineDataSet(dataList, "Set");
+            dataSet.SetDrawFilled(true);
+            dataSet.CubicIntensity = 0.5f;
+            dataSet.CircleRadius = 0f;
+            dataSet.Label = "";
+            dataSet.ValueTextSize = 36f;
+            var chart = new LineChart(activity)
             {
-                CategoryBinding = new HourResultDataBinding {PropertyName = nameof(HourResult.DateTime)},
-                ValueBinding = new HourResultDataBinding {PropertyName = nameof(HourResult.Temperature)},
-                Data = dataList,
-                StrokeColor = Resource.Color.primaryDarkBlue,
-                FillColor = Resource.Color.primaryBlue
+                Data = new LineData(dataSet),
+                LayoutParameters = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MatchParent,
+                    ViewGroup.LayoutParams.MatchParent),
+                Description = new Description() {Text = ""}
             };
-            chartView.Series.Add(series);
-            chartView.HorizontalAxis=new CategoricalAxis();
-            chartView.VerticalAxis=new LinearAxis();
-            activity.FindViewById<ScrollView>(Resource.Id.graphView).AddView(chartView);
+            chart.AnimateXY(500, 500);
+            var xAxis = chart.XAxis;
+            xAxis.Granularity = 0.5F;
+            int year = DateTime.Now.Year;
+            xAxis.SetAvoidFirstLastClipping(true);
+            xAxis.MEntries = points.Select(x => (float) x.Item2).ToList();
+            ;
+            xAxis.ValueFormatter = new AxisValueFormatter(points
+                .Select(x => x.Item1.Replace("00:00", "00").Replace($"{year}-", ""))
+                .ToArray());
+            xAxis.Position = XAxis.XAxisPosition.Bottom;
+            xAxis.GranularityEnabled = true;
+            xAxis.SetDrawLabels(true);
+            xAxis.LabelCount = points.Count;
+            chart.Legend.Enabled = false;
+            activity.FindViewById<RelativeLayout>(Resource.Id.graphView).AddView(chart);
+            chart.Invalidate();
         }
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
-            // Use this to return your custom view for this Fragment
-             return inflater.Inflate(Resource.Layout.graphDailyFragment, container, false);
+            return inflater.Inflate(Resource.Layout.graphDailyFragment, container, false);
         }
     }
 }
