@@ -31,13 +31,16 @@ namespace WeatherForecast.Views.Fragments
             }
         }
 
-        public void InitializeFragment(List<(string, double)> points)
+        public void InitializeFragment(List<(string date, double temperature)> points)
         {
             var activity = this.Activity;
             float i = 0f;
             var dataList = new List<Entry>();
-            points.ForEach(tuple => dataList.Add(new Entry(i++, (float) tuple.Item2)));
+            points.ForEach(tuple => dataList.Add(new Entry(i++, (float) tuple.temperature)));
             var dataSet = new LineDataSet(dataList, "Set");
+            dataSet.SetDrawFilled(true);
+            dataSet.FillColor=Resource.Color.primaryLight;
+            dataSet.FillAlpha = 255;
             dataSet.SetDrawFilled(true);
             dataSet.CubicIntensity = 0.5f;
             dataSet.CircleRadius = 0f;
@@ -51,19 +54,36 @@ namespace WeatherForecast.Views.Fragments
                 Description = new Description() {Text = ""}
             };
             chart.AnimateXY(500, 500);
+
+            #region Axis
+
             var xAxis = chart.XAxis;
             xAxis.Granularity = 0.5F;
             int year = DateTime.Now.Year;
             xAxis.SetAvoidFirstLastClipping(true);
-            xAxis.MEntries = points.Select(x => (float) x.Item2).ToList();
-            ;
+            xAxis.SetDrawGridLines(false);
+            xAxis.SetDrawAxisLine(false);
+            xAxis.MEntries = points.Select(x => (float)x.temperature).ToList();
             xAxis.ValueFormatter = new AxisValueFormatter(points
-                .Select(x => x.Item1.Replace("00:00", "00").Replace($"{year}-", ""))
+                .Select(x => x.date.Replace("00:00", "00").Replace($"{year}-", ""))
                 .ToArray());
             xAxis.Position = XAxis.XAxisPosition.Bottom;
             xAxis.GranularityEnabled = true;
             xAxis.SetDrawLabels(true);
             xAxis.LabelCount = points.Count;
+
+            var yAxis=chart.AxisLeft;
+            yAxis.SetDrawGridLines(false);
+            yAxis.SetDrawAxisLine(false);
+            yAxis.SetDrawLabels(false);
+            yAxis = chart.AxisRight;
+            yAxis.SetDrawGridLines(false);
+            yAxis.SetDrawAxisLine(false);
+            yAxis.SetDrawLabels(false);
+
+            #endregion
+            chart.Description=new Description();
+            chart.Description.Text = "";
             chart.Legend.Enabled = false;
             activity.FindViewById<RelativeLayout>(Resource.Id.graphView).AddView(chart);
             chart.Invalidate();

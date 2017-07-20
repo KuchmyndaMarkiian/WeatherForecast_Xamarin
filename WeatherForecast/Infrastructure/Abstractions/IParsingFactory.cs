@@ -5,6 +5,6 @@ namespace WeatherForecast.Infrastructure.Abstractions
 {
     interface IParsingFactory<T>
     {
-        List<T> ParseText(string[] textLines);
+        List<T> ParseText(List<string> textLines);
     }
 }

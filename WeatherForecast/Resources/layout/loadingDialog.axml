@@ -8,7 +8,7 @@
         android:id="@+id/indicator"
         android:layout_gravity="center"
         app:indicatorName="LineScaleIndicator"
-        app:indicatorColor="#FF0000"
+        app:indicatorColor="@color/primaryDark"
         android:layout_height="128dp"
         android:layout_width="128dp"
         android:padding="18dp"

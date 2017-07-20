@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using WeatherForecast.Infrastructure.Abstractions;
@@ -20,7 +21,7 @@ namespace WeatherForecast.Infrastructure
             if (result.IsSuccessStatusCode)
             {
                 var body = await result.Content.ReadAsStringAsync();
-                string[] splited = body.Substring(body.IndexOf("\n", StringComparison.Ordinal) + 1).Split('\n');
+                var splited = body.Substring(body.IndexOf("\n", StringComparison.Ordinal) + 1).Split('\n').ToList();
                 IParsingFactory<City> factory = new CityParsingFactory();
                 listResult = factory.ParseText(splited);
             }
