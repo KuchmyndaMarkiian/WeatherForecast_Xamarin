@@ -13,7 +13,7 @@ using WeatherForecast.Infrastructure.Models;
 
 namespace WeatherForecast.Views.Activities
 {
-    [Activity(Label = "Weather Forecast", MainLauncher = true)]
+    [Activity(Label = "Weather Forecast", MainLauncher = true, Theme = "@style/NoActionBar")]
     public class LoadingActivity : Activity
     {
         private Dialog _progressDialog;
