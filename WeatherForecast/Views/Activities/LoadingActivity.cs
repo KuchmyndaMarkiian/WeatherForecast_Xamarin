@@ -63,9 +63,7 @@ namespace WeatherForecast.Views.Activities
             _progressDialog.Show();
             Task.Run(() =>
             {
-                while (!_cancellationTokenSource.Token.IsCancellationRequested)
-                {
-                }
+                while (!_cancellationTokenSource.Token.IsCancellationRequested) ;
                 RunOnUiThread(() =>
                 {
                     _progressDialog.Dismiss();

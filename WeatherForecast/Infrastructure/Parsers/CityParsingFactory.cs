@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
-using System.Net.Http;
+using Android.Util;
 using WeatherForecast.Infrastructure.Abstractions;
 using WeatherForecast.Infrastructure.Models;
 using WeatherForecast.Infrastructure.Models.ApiModels.Common;
@@ -10,36 +11,35 @@ namespace WeatherForecast.Infrastructure.Parsers
 {
     class CityParsingFactory : IParsingFactory<City>
     {
-        public List<City> ParseText(List<string> textLines)
+        public List<City> ParseText(IEnumerable<string> textLines)
         {
-            if (textLines == null || !textLines.Any())
+            var enumerable = textLines as IList<string> ?? textLines.ToList();
+            if (!enumerable.Any())
                 return null;
-            /*foreach (string line in textLines)
-            {
-                string[] items = line.Split('\t');
-                if (items.Length == 5 && !string.IsNullOrEmpty(items[0]))
-                    cities.Add(new City
-                    {
-                        Id = int.Parse(items[0]),
-                        Name = items[1],
-                        CountryCode = items[4],
-                        Coord = new Coord() {Longtitude = Double.Parse(items[3]), Latitude = Double.Parse(items[2])}
-                    });
-            }*/
-            return textLines.AsParallel().Select(FormatLinesToCity).ToList();
+            return enumerable.AsParallel()
+                .Select(FormatLinesToCity)
+                .Except(new List<City> {null}.AsParallel())
+                .ToList();
 
             City FormatLinesToCity(string line)
             {
-                string[] items = line.Split('\t');
-                if (items.Length == 5 && !string.IsNullOrEmpty(items[0]))
-                    return new City
-                    {
-                        Id = int.Parse(items[0]),
-                        Name = items[1],
-                        CountryCode = items[4],
-                        Coord = new Coord() { Longtitude = Double.Parse(items[3]), Latitude = Double.Parse(items[2]) }
-                    };
-                return new City();
+                try
+                {
+                    var items = line.Split('\t');
+                    if (items.Length == 5 && !string.IsNullOrEmpty(items[0]))
+                        return new City
+                        {
+                            Id = int.Parse(items[0]),
+                            Name = items[1],
+                            CountryCode = items[4],
+                            Coord = new Coord {Longtitude = double.Parse(items[3],CultureInfo.InvariantCulture), Latitude = double.Parse(items[2], CultureInfo.InvariantCulture) }
+                        };
+                }
+                catch (Exception exception)
+                {
+                    Log.Error("ERROR", exception.Message);
+                }
+                return null;
             }
         }
     }
