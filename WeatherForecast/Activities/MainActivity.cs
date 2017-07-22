@@ -6,15 +6,13 @@ using System.Threading.Tasks;
 using Android.App;
 using Android.Content;
 using Android.OS;
-using Android.Support.V7.App;
 using Android.Widget;
 using WeatherForecast.Infrastructure;
 using WeatherForecast.Infrastructure.Helpers;
-using WeatherForecast.Infrastructure.Models.ApiModels;
-using WeatherForecast.Views.Fragments;
-using City = WeatherForecast.Infrastructure.Models.City;
+using City = WeatherForecast.Models.City;
+using WeatherForecast.Models.ApiModels;
 
-namespace WeatherForecast.Views.Activities
+namespace WeatherForecast.Activities
 {
     [Activity(Label = "MainActivity",Theme = "@style/NoActionBar")]
     public class MainActivity : Activity

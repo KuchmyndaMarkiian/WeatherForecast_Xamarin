@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json;
 
-namespace WeatherForecast.Infrastructure.Models.ApiModels.Common
+namespace WeatherForecast.Models.ApiModels.Common
 {
     public class Wind
     {

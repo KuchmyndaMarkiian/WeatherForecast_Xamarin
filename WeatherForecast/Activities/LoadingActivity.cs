@@ -9,9 +9,9 @@ using Android.Views;
 using Android.Widget;
 using WeatherForecast.Infrastructure;
 using WeatherForecast.Infrastructure.Helpers;
-using WeatherForecast.Infrastructure.Models;
+using WeatherForecast.Models;
 
-namespace WeatherForecast.Views.Activities
+namespace WeatherForecast.Activities
 {
     [Activity(Label = "Weather Forecast", MainLauncher = true, Theme = "@style/NoActionBar")]
     public class LoadingActivity : Activity

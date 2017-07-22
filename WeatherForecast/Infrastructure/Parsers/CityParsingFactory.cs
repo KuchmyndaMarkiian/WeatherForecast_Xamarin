@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using Android.Util;
-using WeatherForecast.Infrastructure.Abstractions;
-using WeatherForecast.Infrastructure.Models;
-using WeatherForecast.Infrastructure.Models.ApiModels.Common;
+using WeatherForecast.Abstractions;
+using WeatherForecast.Models;
+using WeatherForecast.Models.ApiModels.Common;
 
 namespace WeatherForecast.Infrastructure.Parsers
 {
@@ -32,7 +32,11 @@ namespace WeatherForecast.Infrastructure.Parsers
                             Id = int.Parse(items[0]),
                             Name = items[1],
                             CountryCode = items[4],
-                            Coord = new Coord {Longtitude = double.Parse(items[3],CultureInfo.InvariantCulture), Latitude = double.Parse(items[2], CultureInfo.InvariantCulture) }
+                            Coord = new Coord
+                            {
+                                Longtitude = double.Parse(items[3], CultureInfo.InvariantCulture),
+                                Latitude = double.Parse(items[2], CultureInfo.InvariantCulture)
+                            }
                         };
                 }
                 catch (Exception exception)

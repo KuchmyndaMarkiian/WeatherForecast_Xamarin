@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace WeatherForecast.Infrastructure.Helpers
+namespace WeatherForecast.Abstractions
 {
     interface IApiProvider
     {

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using Android.App;
-using Android.Content;
 using Android.OS;
 using Android.Views;
 using Android.Widget;
@@ -10,9 +9,8 @@ using MikePhil.Charting.Charts;
 using MikePhil.Charting.Components;
 using MikePhil.Charting.Data;
 using MikePhil.Charting.Formatter;
-using MikePhil.Charting.Util;
 
-namespace WeatherForecast.Views.Fragments
+namespace WeatherForecast.Activities
 {
     public class GraphDailyFragment : Fragment
     {

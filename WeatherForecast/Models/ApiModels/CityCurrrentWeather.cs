@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
-using WeatherForecast.Infrastructure.Models.ApiModels.Common;
+using WeatherForecast.Models.ApiModels.Common;
 
-namespace WeatherForecast.Infrastructure.Models.ApiModels
+namespace WeatherForecast.Models.ApiModels
 {
     public class Sys
     {

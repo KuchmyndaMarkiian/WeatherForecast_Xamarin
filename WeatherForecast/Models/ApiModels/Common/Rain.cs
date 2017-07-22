@@ -1,4 +1,4 @@
-﻿namespace WeatherForecast.Infrastructure.Models.ApiModels.Common
+﻿namespace WeatherForecast.Models.ApiModels.Common
 {
     public class Rain:IWeatherType
     {

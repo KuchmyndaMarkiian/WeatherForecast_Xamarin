@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
-using System.Security.Policy;
 
-namespace WeatherForecast.Infrastructure.Abstractions
+namespace WeatherForecast.Abstractions
 {
     interface IParsingFactory<T>
     {

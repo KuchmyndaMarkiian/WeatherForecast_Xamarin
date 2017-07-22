@@ -1,9 +1,8 @@
 using System;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
-using WeatherForecast.Infrastructure.Models.ApiModels.Common;
+using WeatherForecast.Models.ApiModels.Common;
 
-namespace WeatherForecast.Infrastructure.Models
+namespace WeatherForecast.Models
 {
     public class City :IComparable<City>
     {

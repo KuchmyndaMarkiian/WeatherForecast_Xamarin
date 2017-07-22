@@ -3,6 +3,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Android.Util;
+using WeatherForecast.Abstractions;
 using WeatherForecast.Infrastructure.Abstractions;
 
 namespace WeatherForecast.Infrastructure.Helpers

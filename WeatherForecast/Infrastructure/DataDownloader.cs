@@ -4,9 +4,9 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Android.Util;
-using WeatherForecast.Infrastructure.Abstractions;
-using WeatherForecast.Infrastructure.Models;
+using WeatherForecast.Abstractions;
 using WeatherForecast.Infrastructure.Parsers;
+using WeatherForecast.Models;
 
 namespace WeatherForecast.Infrastructure
 {
