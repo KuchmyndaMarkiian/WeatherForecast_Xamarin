@@ -1,21 +1,29 @@
 using System;
 using Newtonsoft.Json;
+using Realms;
+using WeatherForecast.Abstractions;
 using WeatherForecast.Models.ApiModels.Common;
 
 namespace WeatherForecast.Models
 {
-    public class City :IComparable<City>
+    public class City : RealmObject, IComparable<City>, ICloneable<City>
     {
         [JsonProperty("id")]
         public int Id { get; set; }
+
         [JsonProperty("name")]
         public string Name { get; set; }
+
         [JsonProperty("country")]
         public string CountryCode { get; set; }
+
         [JsonProperty("coord")]
         public Coord Coord { get; set; }
+
+        public City Clone() => new City {CountryCode = CountryCode, Id = Id, Name = Name, Coord = Coord.Clone()};
+
         public override string ToString() => $"{Name},{CountryCode}";
-        
+
 
         public int CompareTo(City other)
         {

@@ -1,31 +1,13 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Newtonsoft.Json;
-using WeatherForecast.Models.ApiModels.Common;
+using Realms;
+using WeatherForecast.Abstractions;
+using JsonConverter = WeatherForecast.Infrastructure.Abstractions.JsonConverter;
 
 namespace WeatherForecast.Models.ApiModels
 {
-    public class List
-    {
-        [JsonProperty("dt")]
-        public int Datetime { get; set; }
-        [JsonProperty("main")]
-        public Main Main { get; set; }
-        [JsonProperty("weather")]
-        public List<Weather> Weather { get; set; }
-        [JsonProperty("clouds")]
-        public Clouds Clouds { get; set; }
-        [JsonProperty("wind")]
-        public Wind Wind { get; set; }
-        [JsonProperty("rain")]
-        public Rain Rain { get; set; }
-        [JsonProperty("sys")]
-        public Sys Sys { get; set; }
-        [JsonProperty("dt_txt")]
-        public string DatetimeText { get; set; }
-    }
-    
-
-    public class FiveDaysWeather
+    public class FiveDaysWeather: RealmObject, ICloneable<FiveDaysWeather>
     {
         [JsonProperty("cod")]
         public string Cod { get; set; }
@@ -33,9 +15,29 @@ namespace WeatherForecast.Models.ApiModels
         public double Message { get; set; }
         [JsonProperty("cnt")]
         public int Count { get; set; }
-        [JsonProperty("list")]
+
+        [JsonProperty("list"), Ignored]
         public List<List> List { get; set; }
+
+        public string ListJson
+        {
+            get => JsonConverter.Convert(List);
+            set => List = JsonConverter.Read<List<List>>(value);
+        }
+
         [JsonProperty("city")]
         public City City { get; set; }
+
+        public FiveDaysWeather Clone()
+        {
+            return new FiveDaysWeather
+            {
+                Cod = Cod,
+                Count = Count,
+                Message = Message,
+                City = City.Clone(),
+                List = List.Select(x => x.Clone()).ToList()
+            };
+        }
     }
 }

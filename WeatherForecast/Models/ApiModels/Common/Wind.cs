@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json;
+using Realms;
+using WeatherForecast.Abstractions;
 
 namespace WeatherForecast.Models.ApiModels.Common
 {
-    public class Wind
+    public class Wind : RealmObject, ICloneable<Wind>
     {
         /// <summary>
         /// Wind speed. Unit Default: meter/sec, Metric: meter/sec, Imperial: miles/hour.
@@ -19,18 +21,28 @@ namespace WeatherForecast.Models.ApiModels.Common
         [JsonProperty("deg")]
         public double Degree { get; set; }
 
-        public string Direction => _directions.First(x => x.Key(this)).Value;
-
-        private readonly Dictionary<Predicate<Wind>, string> _directions = new Dictionary<Predicate<Wind>, string>()
+        public string Direction()
         {
-            {(wind => wind.Degree >= 0 && wind.Degree < 45), "W"},
-            {(wind => wind.Degree >= 45 && wind.Degree < 90), "NW"},
-            {(wind => wind.Degree >= 90 && wind.Degree < 135), "N"},
-            {(wind => wind.Degree >= 135 && wind.Degree < 180), "NE"},
-            {(wind => wind.Degree >= 180 && wind.Degree < 225), "E"},
-            {(wind => wind.Degree >= 225 && wind.Degree < 270), "SE"},
-            {(wind => wind.Degree >= 270 && wind.Degree < 315), "S"},
-            {(wind => wind.Degree >= 315 && wind.Degree < 45), "SW"},
-        };
+            if (Degree >= 0 && Degree < 45)
+                return "W";
+            if (Degree >= 45 && Degree < 90)
+                return "NW";
+            if (Degree >= 90 && Degree < 135)
+                return "N";
+            if (Degree >= 135 && Degree < 180)
+                return "NE";
+            if (Degree >= 180 && Degree < 225)
+                return "E";
+            if (Degree >= 225 && Degree < 270)
+                return "SE";
+            if (Degree >= 270 && Degree < 315)
+                return "S";
+            return "SW";
+        }
+
+
+
+
+        public Wind Clone() => new Wind {Degree = Degree, Speed = Speed};
     }
 }

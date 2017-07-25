@@ -1,8 +1,9 @@
 using Newtonsoft.Json;
+using WeatherForecast.Abstractions;
 
 namespace WeatherForecast.Models.ApiModels.Common
 {
-    interface IWeatherType
+    public interface IWeatherType
     {
         /// <summary>
         /// ____ volume for last 3 hours, mm

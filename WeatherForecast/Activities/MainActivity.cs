@@ -1,28 +1,28 @@
-﻿using System;
-using System.Globalization;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Android.App;
 using Android.Content;
 using Android.OS;
-using Android.Widget;
+using Realms;
+using WeatherForecast.Abstractions;
 using WeatherForecast.Infrastructure;
+using WeatherForecast.Infrastructure.Abstractions;
 using WeatherForecast.Infrastructure.Helpers;
-using City = WeatherForecast.Models.City;
+using WeatherForecast.Models;
 using WeatherForecast.Models.ApiModels;
 
 namespace WeatherForecast.Activities
 {
-    [Activity(Label = "MainActivity",Theme = "@style/NoActionBar")]
+    [Activity(Label = "MainActivity", Theme = "@style/NoActionBar")]
     public class MainActivity : Activity
     {
         private Dialog _progressDialog;
-        private City _currentModel;
+
         private readonly CancellationTokenSource _cancellationTokenSource = new CancellationTokenSource();
 
-        private CityCurrrentWeather _currentDayWeather;
-        private FiveDaysWeather _fiveDaysWeather;
+        private MainModel _model = new MainModel();
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -32,13 +32,13 @@ namespace WeatherForecast.Activities
             _progressDialog = new Dialog(this);
             _progressDialog.InitializeLoadingDialog();
             var tran = FragmentManager.BeginTransaction();
-            tran.Add(Resource.Id.todayFragmentContainer, new TodayFragment(), nameof(TodayFragment));
-            tran.Add(Resource.Id.todayDetailFragmentContainer, new TodayDetailsFragment(),
+            tran.Add(Resource.Id.todayFragmentContainer, new TodayFragment{Arguments = new Bundle()}, nameof(TodayFragment));
+            tran.Add(Resource.Id.todayDetailFragmentContainer, new TodayDetailsFragment { Arguments = new Bundle() },
                 nameof(TodayDetailsFragment));
-            tran.Add(Resource.Id.graphFragmentContainer, new GraphDailyFragment(), nameof(GraphDailyFragment));
+            tran.Add(Resource.Id.graphFragmentContainer, new GraphDailyFragment { Arguments = new Bundle() }, nameof(GraphDailyFragment));
             tran.Commit();
             Intent current = Intent;
-            _currentModel = current.GetExtra<City>("city");
+            _model = current.GetExtra<MainModel>("city");
         }
 
         protected override void OnResume()
@@ -50,68 +50,106 @@ namespace WeatherForecast.Activities
                 while (!_cancellationTokenSource.Token.IsCancellationRequested) ;
                 RunOnUiThread(() =>
                 {
-                    _progressDialog.Dismiss();
-                    RunOnUiThread(() =>
+                    List<Fragment> fragments = new List<Fragment>(3);
+
+                    #region Current Fragment
+
+                    var todayFragment = FragmentManager.FindFragmentByTag(nameof(TodayFragment));
+                    Bundle bundle = new Bundle();
+                    bundle.PutString("todayLessModel", JsonConverter.Convert(new TodayFragmentModel
                     {
-                        #region Current Fragment
+                        City = $"{_model.CurrentModel.Name},{_model.CurrentModel.CountryCode}",
+                        Temperature = _model.CurrentDayWeather.Main.Temp,
+                        MinTemperature = _model.CurrentDayWeather.Main.TempMin,
+                        MaxTemperature = _model.CurrentDayWeather.Main.TempMax
+                    }));
+                    todayFragment.Arguments.PutAll(bundle);
+                    fragments.Add(todayFragment);
 
-                        var todayFragment = FragmentManager.FindFragmentByTag(nameof(TodayFragment));
-                        todayFragment.Activity.FindViewById<TextView>(Resource.Id.cityHeader)
-                            .Text = _currentModel.ToString();
-                        todayFragment.Activity.FindViewById<TextView>(Resource.Id.currentTemperture)
-                            .Text = Math.Round(_currentDayWeather.Main.Temp).ToString(CultureInfo.InvariantCulture);
-                        todayFragment.Activity.FindViewById<TextView>(Resource.Id.rangeTemperture)
-                                .Text =
-                            $"{Math.Round(_currentDayWeather.Main.TempMin)}...{Math.Round(_currentDayWeather.Main.TempMax)}";
+                    #endregion
 
-                        #endregion
+                    #region Detail Fragment
 
-                        #region Detail Fragment
+                    var todayDetailFragment = FragmentManager.FindFragmentByTag(nameof(TodayDetailsFragment));
+                    bundle = new Bundle();
+                    bundle.PutString("todayDetailModel", JsonConverter.Convert(new TodayDetailFragmentModel
+                    {
+                        Main = _model.CurrentDayWeather.Main,
+                        Clouds = _model.CurrentDayWeather.Clouds,
+                        Sys = _model.CurrentDayWeather.Sys,
+                        Wind = _model.CurrentDayWeather.Wind
+                    }));
+                    todayDetailFragment.Arguments.PutAll(bundle);
+                    fragments.Add(todayDetailFragment);
 
-                        var todayDetailFragment = FragmentManager.FindFragmentByTag(nameof(TodayDetailsFragment));
-                        todayDetailFragment.Activity.FindViewById<TextView>(Resource.Id.cloudinessHeader).Text =
-                            $"Cloudiness: {_currentDayWeather.Clouds.All}%";
-                        todayDetailFragment.Activity.FindViewById<TextView>(Resource.Id.windSpeedHeader).Text =
-                            $"Wind speed: {_currentDayWeather.Wind.Speed}m/s";
-                        todayDetailFragment.Activity.FindViewById<TextView>(Resource.Id.windDirectionHeader).Text =
-                            $"Direction: {_currentDayWeather.Wind.Direction}";
-                        todayDetailFragment.Activity.FindViewById<TextView>(Resource.Id.humidityHeader).Text =
-                            $"Humidity: {_currentDayWeather.Main.Humidity}%";
-                        todayDetailFragment.Activity.FindViewById<TextView>(Resource.Id.pressureHeader).Text =
-                            $"Pressure: {_currentDayWeather.Main.Pressure}hPa";
-                        todayDetailFragment.Activity.FindViewById<TextView>(Resource.Id.sunriseHeader).Text =
-                            $"Sunrise: {_currentDayWeather.Sys.SunriseHour}";
-                        todayDetailFragment.Activity.FindViewById<TextView>(Resource.Id.sunsetHeader).Text =
-                            $"Sunset: {_currentDayWeather.Sys.SunsetHour}";
+                    #endregion
 
-                        #endregion
+                    #region Graph Fragment
 
-                        #region Graph Fragment
+                    var graphFragment = FragmentManager.FindFragmentByTag(nameof(GraphDailyFragment));
+                    bundle = new Bundle();
+                    bundle.PutString("graphPoints",
+                        JsonConverter.Convert(
+                            _model.FiveDaysWeather.List
+                                .Select(x => (date:x.DatetimeText.Replace(' ', '\t'), temperature: x.Main.Temp))
+                                .ToList()));
+                    graphFragment.Arguments.PutAll(bundle);
+                    fragments.Add(graphFragment);
 
-                        var graphFragment = FragmentManager.FindFragmentByTag(nameof(GraphDailyFragment));
-                        if (graphFragment is GraphDailyFragment fragment)
+                    #endregion
+
+                    fragments.ForEach(fragment =>
+                    {
+                        if (fragment is IFragmentViewModelBase modelBase)
                         {
-                            fragment.InitializeFragment(_fiveDaysWeather.List.Select(x=> (x.DatetimeText.Replace(' ','\t'), x.Main.Temp)).ToList());
+                            modelBase.InitializeViewModel();
                         }
-
-                        #endregion
-
-                        _progressDialog.Dismiss();
                     });
+
+                    using (IMemoryManipulator manipulator = new RealmManager(Realm.GetInstance()))
+                    {
+                        if (manipulator.IsExists<MainModel>())
+                        {
+                            manipulator.Clear<MainModel>();
+                        }
+                        manipulator.Write(_model);
+                    }
+
+                    _progressDialog.Dismiss();
+
                 });
             });
 
-            Task.Run(() =>
+                Task.Run(() =>
+                {
+                    using (IMemoryManipulator manipulator = new RealmManager(Realm.GetInstance()))
+                    {
+                        if (!manipulator.IsExists<MainModel>())
+                        {
+                            UpdateData();
+                        }
+                        else
+                        {
+                            _model = manipulator.Read<MainModel>(null).FirstOrDefault()?.Clone();
+                            if (_model == null)
+                            {
+                                UpdateData();
+                            }
+                        }
+                    }
+                    _cancellationTokenSource.Cancel();
+                });
+            }
+
+            private void UpdateData()
             {
-                Task.WaitAll(Task.Run(() => _currentDayWeather = new OpenWeatherProvider()
+                Task.WaitAll(Task.Run(() => _model.CurrentDayWeather = new OpenWeatherProvider()
                     .GetData<CityCurrrentWeather>(OpenWeatherProvider.UrlParameters.Current,
-                        ("id", _currentModel.Id.ToString()), OpenWeatherProvider.UrlParameters.Metric)
-                    .Result), Task.Run(() => _fiveDaysWeather = new OpenWeatherProvider()
+                        ("id", _model.CurrentModel.Id.ToString()), OpenWeatherProvider.UrlParameters.Metric)
+                    .Result), Task.Run(() => _model.FiveDaysWeather = new OpenWeatherProvider()
                     .GetData<FiveDaysWeather>(OpenWeatherProvider.UrlParameters.Daily5,
-                        ("id", _currentModel.Id.ToString()), OpenWeatherProvider.UrlParameters.Metric)
+                        ("id", _model.CurrentModel.Id.ToString()), OpenWeatherProvider.UrlParameters.Metric)
                     .Result));
-                _cancellationTokenSource.Cancel();
-            });
+            }
         }
     }
-}

@@ -9,10 +9,13 @@ using MikePhil.Charting.Charts;
 using MikePhil.Charting.Components;
 using MikePhil.Charting.Data;
 using MikePhil.Charting.Formatter;
+using WeatherForecast.Abstractions;
+using WeatherForecast.Infrastructure.Abstractions;
+using WeatherForecast.Models.ApiModels;
 
 namespace WeatherForecast.Activities
 {
-    public class GraphDailyFragment : Fragment
+    public class GraphDailyFragment : Fragment, IFragmentViewModelBase
     {
         class AxisValueFormatter : IndexAxisValueFormatter
         {
@@ -29,15 +32,23 @@ namespace WeatherForecast.Activities
             }
         }
 
-        public void InitializeFragment(List<(string date, double temperature)> points)
+        public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
+            return inflater.Inflate(Resource.Layout.graphDailyFragment, container, false);
+        }
+        
+        public void InitializeViewModel()
+        {
+            var points =
+                JsonConverter.Read<List<(string date, double temperature)>>(Arguments.GetString("graphPoints"));
+            
             var activity = this.Activity;
             float i = 0f;
             var dataList = new List<Entry>();
             points.ForEach(tuple => dataList.Add(new Entry(i++, (float) tuple.temperature)));
             var dataSet = new LineDataSet(dataList, "Set");
             dataSet.SetDrawFilled(true);
-            dataSet.FillColor=Resource.Color.primaryLight;
+            dataSet.FillColor = Resource.Color.primaryLight;
             dataSet.FillAlpha = 255;
             dataSet.SetDrawFilled(true);
             dataSet.CubicIntensity = 0.5f;
@@ -61,7 +72,7 @@ namespace WeatherForecast.Activities
             xAxis.SetAvoidFirstLastClipping(true);
             xAxis.SetDrawGridLines(false);
             xAxis.SetDrawAxisLine(false);
-            xAxis.MEntries = points.Select(x => (float)x.temperature).ToList();
+            xAxis.MEntries = points.Select(x => (float) x.temperature).ToList();
             xAxis.ValueFormatter = new AxisValueFormatter(points
                 .Select(x => x.date.Replace("00:00", "00").Replace($"{year}-", ""))
                 .ToArray());
@@ -70,7 +81,7 @@ namespace WeatherForecast.Activities
             xAxis.SetDrawLabels(true);
             xAxis.LabelCount = points.Count;
 
-            var yAxis=chart.AxisLeft;
+            var yAxis = chart.AxisLeft;
             yAxis.SetDrawGridLines(false);
             yAxis.SetDrawAxisLine(false);
             yAxis.SetDrawLabels(false);
@@ -80,16 +91,12 @@ namespace WeatherForecast.Activities
             yAxis.SetDrawLabels(false);
 
             #endregion
-            chart.Description=new Description();
+
+            chart.Description = new Description();
             chart.Description.Text = "";
             chart.Legend.Enabled = false;
             activity.FindViewById<RelativeLayout>(Resource.Id.graphView).AddView(chart);
             chart.Invalidate();
-        }
-
-        public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
-        {
-            return inflater.Inflate(Resource.Layout.graphDailyFragment, container, false);
         }
     }
 }

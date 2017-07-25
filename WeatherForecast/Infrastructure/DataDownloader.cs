@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
-using System.Net.Http;
 using System.Threading.Tasks;
 using Android.Util;
 using WeatherForecast.Abstractions;
@@ -10,36 +10,22 @@ using WeatherForecast.Models;
 
 namespace WeatherForecast.Infrastructure
 {
-    class DataDownloader : IDisposable
+    class DataDownloader
     {
-        private readonly HttpClient _client = new HttpClient();
-
-        public async Task<List<City>> DownloadCities()
+        public async Task<List<City>> DownloadCities(Stream stream)
         {
             try
             {
-                var listResult = new List<City>();
-                var result = await _client.SendAsync(
-                    new HttpRequestMessage(HttpMethod.Get, "http://openweathermap.org/help/city_list.txt"));
-                if (result.IsSuccessStatusCode)
-                {
-                    var body = await result.Content.ReadAsStringAsync();
-                    var splited = body.Substring(body.IndexOf("\n", StringComparison.Ordinal) + 1).Split('\n').ToList();
-                    IParsingFactory<City> factory = new CityParsingFactory();
-                    listResult = factory.ParseText(splited);
-                }
-                return listResult;
+                var body = await new StreamReader(stream).ReadToEndAsync();
+                var splited = body.Substring(body.IndexOf("\n", StringComparison.Ordinal) + 1).Split('\n').ToList();
+                IParsingFactory<City> factory = new CityParsingFactory();
+                return factory.ParseText(splited);
             }
             catch (Exception exception)
             {
                 Log.Error("ERROR",exception.Message);
                 return null;
             }
-        }
-
-        public void Dispose()
-        {
-            _client?.Dispose();
         }
     }
 }
