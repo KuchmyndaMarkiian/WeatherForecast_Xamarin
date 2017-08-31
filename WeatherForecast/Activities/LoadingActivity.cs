@@ -9,6 +9,7 @@ using Android.OS;
 using Android.Views;
 using Android.Widget;
 using Realms;
+using WeatherForecast.Abstractions;
 using WeatherForecast.Infrastructure;
 using WeatherForecast.Infrastructure.Helpers;
 using WeatherForecast.Models;
@@ -20,13 +21,15 @@ namespace WeatherForecast.Activities
     [Activity(Label = "Weather Forecast", MainLauncher = true, Theme = "@style/NoActionBar")]
     public class LoadingActivity : Activity
     {
+        #region Fields
+
         private Dialog _progressDialog;
         private LinearLayout _searchBox;
         private AutoCompleteTextView _autoCompleteTextView;
-
         private readonly CancellationTokenSource _cancellationTokenSource = new CancellationTokenSource();
-
         private List<City> _cities;
+
+        #endregion
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -66,7 +69,7 @@ namespace WeatherForecast.Activities
             _progressDialog.Show();
             Task.Run(() =>
             {
-                using (IMemoryManipulator manipulator=new RealmManager(Realm.GetInstance()))
+                using (IMemoryManipulator manipulator = new RealmManager(Realm.GetInstance()))
                 {
                     if (manipulator.IsExists<MainModel>())
                     {
@@ -88,11 +91,12 @@ namespace WeatherForecast.Activities
                 });
             });
 
-            Task.Run(async() =>
+            Task.Run(async () =>
             {
-                    var stream=Assets.Open("CityList.txt",Access.Random);
-                    _cities =await new DataDownloader().DownloadCities(stream);
-                    _cancellationTokenSource.Cancel();
+                var stream = Assets.Open("CityList.txt", Access.Random);
+                //Downloads data from the embedded asset
+                _cities = await new DataDownloader().DownloadCities(stream);
+                _cancellationTokenSource.Cancel();
             });
         }
 

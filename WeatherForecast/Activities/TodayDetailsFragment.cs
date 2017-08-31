@@ -3,7 +3,7 @@ using Android.OS;
 using Android.Views;
 using Android.Widget;
 using WeatherForecast.Abstractions;
-using WeatherForecast.Infrastructure.Abstractions;
+using WeatherForecast.Infrastructure.Helpers;
 using WeatherForecast.Models;
 
 namespace WeatherForecast.Activities

@@ -4,15 +4,24 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Android.Util;
 using WeatherForecast.Abstractions;
-using WeatherForecast.Infrastructure.Abstractions;
 
 namespace WeatherForecast.Infrastructure.Helpers
 {
     class OpenWeatherProvider : IApiProvider
     {
+        #region Properties
+
         public string IdCode { get; } = "&APPID=96de315db02590f7a3f9554b37aed1af";
         public string HostUrl { get; } = "http://api.openweathermap.org/data/2.5/";
 
+        #endregion
+        /// <summary>
+        /// Downloads weathers data from a official provider.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="url"></param>
+        /// <param name="parameters"></param>
+        /// <returns></returns>
         public async Task<T> GetData<T>(string url, params (string, string)[] parameters)
         {
             string createdUrl = $"{HostUrl}{url}{FormatParameters(parameters)}";
@@ -34,7 +43,7 @@ namespace WeatherForecast.Infrastructure.Helpers
 
             }
             return default(T);
-
+            //Local function C# 7.0+
             string FormatParameters((string, string)[] data) =>
                 $"?{string.Join("&", data.Select(x => $"{x.Item1}={x.Item2}"))}{IdCode}";
         }
@@ -45,6 +54,5 @@ namespace WeatherForecast.Infrastructure.Helpers
             public static string Daily5 => "forecast";
             public static (string, string) Metric => ("units", "metric");
         }
-
     }
 }

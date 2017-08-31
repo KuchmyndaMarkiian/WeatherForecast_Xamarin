@@ -110,7 +110,6 @@
   <ItemGroup>
     <Compile Include="Abstractions\ICloneable.cs" />
     <Compile Include="Abstractions\IFragmentViewModelBase.cs" />
-    <Compile Include="Abstractions\IModelBase.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Models\ApiModels\Common\WeatherType.cs" />
     <Compile Include="Models\ApiModels\List.cs" />
@@ -126,7 +125,7 @@
     <Compile Include="Infrastructure\Extensions.cs" />
     <Compile Include="Abstractions\IApiProvider.cs" />
     <Compile Include="Infrastructure\Helpers\OpenWeatherProvider.cs" />
-    <Compile Include="Infrastructure\IMemoryManipulator.cs" />
+    <Compile Include="Abstractions\IMemoryManipulator.cs" />
     <Compile Include="Infrastructure\RealmManager.cs" />
     <Compile Include="Models\ApiModels\CityCurrrentWeather.cs" />
     <Compile Include="Models\ApiModels\Common\Clouds.cs" />

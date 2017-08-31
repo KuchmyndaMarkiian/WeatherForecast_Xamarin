@@ -12,6 +12,11 @@ namespace WeatherForecast.Infrastructure
 {
     class DataDownloader
     {
+        /// <summary>
+        /// Download data from Stream
+        /// </summary>
+        /// <param name="stream"></param>
+        /// <returns></returns>
         public async Task<List<City>> DownloadCities(Stream stream)
         {
             try

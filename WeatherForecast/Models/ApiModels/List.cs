@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 using Realms;
 using WeatherForecast.Abstractions;
 using WeatherForecast.Models.ApiModels.Common;
-using JsonConverter = WeatherForecast.Infrastructure.Abstractions.JsonConverter;
+using JsonConverter = WeatherForecast.Infrastructure.Helpers.JsonConverter;
 
 namespace WeatherForecast.Models.ApiModels
 {

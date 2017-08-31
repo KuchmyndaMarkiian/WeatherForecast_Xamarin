@@ -20,7 +20,7 @@ namespace WeatherForecast.Infrastructure.Parsers
                 .Select(FormatLinesToCity)
                 .Except(new List<City> {null}.AsParallel())
                 .ToList();
-
+            //Local function C# 7.0+
             City FormatLinesToCity(string line)
             {
                 try

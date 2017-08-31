@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using Realms;
+using WeatherForecast.Abstractions;
 
 namespace WeatherForecast.Infrastructure
 {
@@ -24,7 +25,8 @@ namespace WeatherForecast.Infrastructure
         {
             _dbRealm.RemoveAll<T>();
         }
-        //TODO:  Need fix storing and reading(weather always null)
+
+        //TODO:  Need fix storing and reading(weathers always null)
         public IQueryable<T> Read<T>(Func<T, bool> condition) where T : RealmObject => condition == null
             ? _dbRealm.All<T>()
             : _dbRealm.All<T>().Where(condition).AsQueryable();

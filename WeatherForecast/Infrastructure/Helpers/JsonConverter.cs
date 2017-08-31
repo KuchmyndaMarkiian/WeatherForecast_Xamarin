@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace WeatherForecast.Infrastructure.Abstractions
+namespace WeatherForecast.Infrastructure.Helpers
 {
     class JsonConverter
     {

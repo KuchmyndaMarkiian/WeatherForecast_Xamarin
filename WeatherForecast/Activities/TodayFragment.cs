@@ -6,14 +6,13 @@ using Android.Views;
 using Android.Widget;
 // ReSharper disable once RedundantUsingDirective
 using WeatherForecast.Abstractions;
-using WeatherForecast.Infrastructure.Abstractions;
+using WeatherForecast.Infrastructure.Helpers;
 using WeatherForecast.Models;
 
 namespace WeatherForecast.Activities
 {
     public class TodayFragment : Fragment,IFragmentViewModelBase
     {
-
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             // Use this to return your custom view for this Fragment

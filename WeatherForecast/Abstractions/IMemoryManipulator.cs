@@ -2,7 +2,7 @@
 using System.Linq;
 using Realms;
 
-namespace WeatherForecast.Infrastructure
+namespace WeatherForecast.Abstractions
 {
     interface IMemoryManipulator:IDisposable
     {

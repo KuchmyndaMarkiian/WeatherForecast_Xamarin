@@ -8,7 +8,6 @@ using Android.OS;
 using Realms;
 using WeatherForecast.Abstractions;
 using WeatherForecast.Infrastructure;
-using WeatherForecast.Infrastructure.Abstractions;
 using WeatherForecast.Infrastructure.Helpers;
 using WeatherForecast.Models;
 using WeatherForecast.Models.ApiModels;
@@ -18,11 +17,13 @@ namespace WeatherForecast.Activities
     [Activity(Label = "MainActivity", Theme = "@style/NoActionBar")]
     public class MainActivity : Activity
     {
+        #region Fields
+
         private Dialog _progressDialog;
-
         private readonly CancellationTokenSource _cancellationTokenSource = new CancellationTokenSource();
-
         private MainModel _model = new MainModel();
+
+        #endregion
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -32,10 +33,12 @@ namespace WeatherForecast.Activities
             _progressDialog = new Dialog(this);
             _progressDialog.InitializeLoadingDialog();
             var tran = FragmentManager.BeginTransaction();
-            tran.Add(Resource.Id.todayFragmentContainer, new TodayFragment{Arguments = new Bundle()}, nameof(TodayFragment));
-            tran.Add(Resource.Id.todayDetailFragmentContainer, new TodayDetailsFragment { Arguments = new Bundle() },
+            tran.Add(Resource.Id.todayFragmentContainer, new TodayFragment {Arguments = new Bundle()},
+                nameof(TodayFragment));
+            tran.Add(Resource.Id.todayDetailFragmentContainer, new TodayDetailsFragment {Arguments = new Bundle()},
                 nameof(TodayDetailsFragment));
-            tran.Add(Resource.Id.graphFragmentContainer, new GraphDailyFragment { Arguments = new Bundle() }, nameof(GraphDailyFragment));
+            tran.Add(Resource.Id.graphFragmentContainer, new GraphDailyFragment {Arguments = new Bundle()},
+                nameof(GraphDailyFragment));
             tran.Commit();
             Intent current = Intent;
             _model = current.GetExtra<MainModel>("city");
@@ -119,37 +122,36 @@ namespace WeatherForecast.Activities
 
                 });
             });
-
-                Task.Run(() =>
+            Task.Run(() =>
+            {
+                using (IMemoryManipulator manipulator = new RealmManager(Realm.GetInstance()))
                 {
-                    using (IMemoryManipulator manipulator = new RealmManager(Realm.GetInstance()))
+                    if (!manipulator.IsExists<MainModel>())
                     {
-                        if (!manipulator.IsExists<MainModel>())
+                        UpdateData();
+                    }
+                    else
+                    {
+                        _model = manipulator.Read<MainModel>(null).FirstOrDefault()?.Clone();
+                        if (_model == null)
                         {
                             UpdateData();
                         }
-                        else
-                        {
-                            _model = manipulator.Read<MainModel>(null).FirstOrDefault()?.Clone();
-                            if (_model == null)
-                            {
-                                UpdateData();
-                            }
-                        }
                     }
-                    _cancellationTokenSource.Cancel();
-                });
-            }
+                }
+                _cancellationTokenSource.Cancel();
+            });
+        }
 
-            private void UpdateData()
-            {
-                Task.WaitAll(Task.Run(() => _model.CurrentDayWeather = new OpenWeatherProvider()
-                    .GetData<CityCurrrentWeather>(OpenWeatherProvider.UrlParameters.Current,
-                        ("id", _model.CurrentModel.Id.ToString()), OpenWeatherProvider.UrlParameters.Metric)
-                    .Result), Task.Run(() => _model.FiveDaysWeather = new OpenWeatherProvider()
-                    .GetData<FiveDaysWeather>(OpenWeatherProvider.UrlParameters.Daily5,
-                        ("id", _model.CurrentModel.Id.ToString()), OpenWeatherProvider.UrlParameters.Metric)
-                    .Result));
-            }
+        private void UpdateData()
+        {
+            Task.WaitAll(Task.Run(() => _model.CurrentDayWeather = new OpenWeatherProvider()
+                .GetData<CityCurrrentWeather>(OpenWeatherProvider.UrlParameters.Current,
+                    ("id", _model.CurrentModel.Id.ToString()), OpenWeatherProvider.UrlParameters.Metric)
+                .Result), Task.Run(() => _model.FiveDaysWeather = new OpenWeatherProvider()
+                .GetData<FiveDaysWeather>(OpenWeatherProvider.UrlParameters.Daily5,
+                    ("id", _model.CurrentModel.Id.ToString()), OpenWeatherProvider.UrlParameters.Metric)
+                .Result));
         }
     }
+}

@@ -3,7 +3,7 @@ using System.Linq;
 using Newtonsoft.Json;
 using Realms;
 using WeatherForecast.Abstractions;
-using JsonConverter = WeatherForecast.Infrastructure.Abstractions.JsonConverter;
+using JsonConverter = WeatherForecast.Infrastructure.Helpers.JsonConverter;
 
 namespace WeatherForecast.Models.ApiModels
 {

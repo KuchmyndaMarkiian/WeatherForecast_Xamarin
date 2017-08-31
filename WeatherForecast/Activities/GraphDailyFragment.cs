@@ -10,7 +10,7 @@ using MikePhil.Charting.Components;
 using MikePhil.Charting.Data;
 using MikePhil.Charting.Formatter;
 using WeatherForecast.Abstractions;
-using WeatherForecast.Infrastructure.Abstractions;
+using WeatherForecast.Infrastructure.Helpers;
 using WeatherForecast.Models.ApiModels;
 
 namespace WeatherForecast.Activities
@@ -41,11 +41,13 @@ namespace WeatherForecast.Activities
         {
             var points =
                 JsonConverter.Read<List<(string date, double temperature)>>(Arguments.GetString("graphPoints"));
-            
+
+            #region Drawing the graph
+
             var activity = this.Activity;
             float i = 0f;
             var dataList = new List<Entry>();
-            points.ForEach(tuple => dataList.Add(new Entry(i++, (float) tuple.temperature)));
+            points.ForEach(tuple => dataList.Add(new Entry(i++, (float)tuple.temperature)));
             var dataSet = new LineDataSet(dataList, "Set");
             dataSet.SetDrawFilled(true);
             dataSet.FillColor = Resource.Color.primaryLight;
@@ -60,7 +62,7 @@ namespace WeatherForecast.Activities
                 Data = new LineData(dataSet),
                 LayoutParameters = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MatchParent,
                     ViewGroup.LayoutParams.MatchParent),
-                Description = new Description() {Text = ""}
+                Description = new Description() { Text = "" }
             };
             chart.AnimateXY(500, 500);
 
@@ -72,7 +74,7 @@ namespace WeatherForecast.Activities
             xAxis.SetAvoidFirstLastClipping(true);
             xAxis.SetDrawGridLines(false);
             xAxis.SetDrawAxisLine(false);
-            xAxis.MEntries = points.Select(x => (float) x.temperature).ToList();
+            xAxis.MEntries = points.Select(x => (float)x.temperature).ToList();
             xAxis.ValueFormatter = new AxisValueFormatter(points
                 .Select(x => x.date.Replace("00:00", "00").Replace($"{year}-", ""))
                 .ToArray());
@@ -97,6 +99,9 @@ namespace WeatherForecast.Activities
             chart.Legend.Enabled = false;
             activity.FindViewById<RelativeLayout>(Resource.Id.graphView).AddView(chart);
             chart.Invalidate();
+
+            #endregion
+
         }
     }
 }
