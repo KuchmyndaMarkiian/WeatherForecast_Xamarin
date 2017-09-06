@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Android.App;
 using Android.Content;
 using Android.OS;
-using Realms;
+
 using WeatherForecast.Abstractions;
 using WeatherForecast.Infrastructure;
 using WeatherForecast.Infrastructure.Helpers;
@@ -64,7 +64,8 @@ namespace WeatherForecast.Activities
                         City = $"{_model.CurrentModel.Name},{_model.CurrentModel.CountryCode}",
                         Temperature = _model.CurrentDayWeather.Main.Temp,
                         MinTemperature = _model.CurrentDayWeather.Main.TempMin,
-                        MaxTemperature = _model.CurrentDayWeather.Main.TempMax
+                        MaxTemperature = _model.CurrentDayWeather.Main.TempMax,
+                        Icon = Global.GetIcon(_model.CurrentDayWeather.Weather.First().Icon)
                     }));
                     todayFragment.Arguments.PutAll(bundle);
                     fragments.Add(todayFragment);
@@ -109,35 +110,20 @@ namespace WeatherForecast.Activities
                         }
                     });
 
-                    using (IMemoryManipulator manipulator = new RealmManager(Realm.GetInstance()))
-                    {
-                        if (manipulator.IsExists<MainModel>())
-                        {
-                            manipulator.Clear<MainModel>();
-                        }
-                        manipulator.Write(_model);
-                    }
-
+                    /*var repository=new MainModelRepository();
+                    repository.Clear();
+                    repository.Insert(_model);*/
+                    DeviceSerialization.Serialize(_model,Global.GetWeatherFileName());
                     _progressDialog.Dismiss();
 
                 });
             });
             Task.Run(() =>
             {
-                using (IMemoryManipulator manipulator = new RealmManager(Realm.GetInstance()))
+                var deserialized = DeviceSerialization.Deserialize<MainModel>(Global.GetWeatherFileName());
+                if (deserialized == null)
                 {
-                    if (!manipulator.IsExists<MainModel>())
-                    {
-                        UpdateData();
-                    }
-                    else
-                    {
-                        _model = manipulator.Read<MainModel>(null).FirstOrDefault()?.Clone();
-                        if (_model == null)
-                        {
-                            UpdateData();
-                        }
-                    }
+                    UpdateData();
                 }
                 _cancellationTokenSource.Cancel();
             });
@@ -147,10 +133,10 @@ namespace WeatherForecast.Activities
         {
             Task.WaitAll(Task.Run(() => _model.CurrentDayWeather = new OpenWeatherProvider()
                 .GetData<CityCurrrentWeather>(OpenWeatherProvider.UrlParameters.Current,
-                    ("id", _model.CurrentModel.Id.ToString()), OpenWeatherProvider.UrlParameters.Metric)
+                    ("id", _model.CurrentModel.CityId.ToString()), OpenWeatherProvider.UrlParameters.Metric)
                 .Result), Task.Run(() => _model.FiveDaysWeather = new OpenWeatherProvider()
                 .GetData<FiveDaysWeather>(OpenWeatherProvider.UrlParameters.Daily5,
-                    ("id", _model.CurrentModel.Id.ToString()), OpenWeatherProvider.UrlParameters.Metric)
+                    ("id", _model.CurrentModel.CityId.ToString()), OpenWeatherProvider.UrlParameters.Metric)
                 .Result));
         }
     }

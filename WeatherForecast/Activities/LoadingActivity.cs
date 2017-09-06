@@ -8,7 +8,7 @@ using Android.Content.Res;
 using Android.OS;
 using Android.Views;
 using Android.Widget;
-using Realms;
+
 using WeatherForecast.Abstractions;
 using WeatherForecast.Infrastructure;
 using WeatherForecast.Infrastructure.Helpers;
@@ -22,8 +22,7 @@ namespace WeatherForecast.Activities
     public class LoadingActivity : Activity
     {
         #region Fields
-
-        private Dialog _progressDialog;
+        
         private LinearLayout _searchBox;
         private AutoCompleteTextView _autoCompleteTextView;
         private readonly CancellationTokenSource _cancellationTokenSource = new CancellationTokenSource();
@@ -37,8 +36,8 @@ namespace WeatherForecast.Activities
             SetContentView(Resource.Layout.loading);
             _searchBox = FindViewById<LinearLayout>(Resource.Id.searchBox);
             _autoCompleteTextView = FindViewById<AutoCompleteTextView>(Resource.Id.autocompleteView);
-            _progressDialog = new Dialog(this);
-            _progressDialog.InitializeLoadingDialog();
+       
+            
             FindViewById<Button>(Resource.Id.loadingNextButton).Click += (sender, args) =>
             {
                 var typed = _autoCompleteTextView.Text;
@@ -66,24 +65,21 @@ namespace WeatherForecast.Activities
         protected override void OnResume()
         {
             base.OnResume();
-            _progressDialog.Show();
+            var progressDialog = new Dialog(this);
+            progressDialog.InitializeLoadingDialog();
+            progressDialog.Show();
             Task.Run(() =>
             {
-                using (IMemoryManipulator manipulator = new RealmManager(Realm.GetInstance()))
+                var  deserialized=DeviceSerialization.Deserialize<MainModel>(Global.GetWeatherFileName());
+                if (deserialized != null)
                 {
-                    if (manipulator.IsExists<MainModel>())
-                    {
-                        var readed = manipulator.Read<MainModel>(null).FirstOrDefault();
-                        if (readed != null)
-                        {
-                            PassModelAndGo(readed.Clone());
-                        }
-                    }
+                    PassModelAndGo(deserialized);
                 }
+               
                 while (!_cancellationTokenSource.Token.IsCancellationRequested) ;
                 RunOnUiThread(() =>
                 {
-                    _progressDialog.Dismiss();
+                    progressDialog.Dismiss();
                     _searchBox.Visibility = ViewStates.Visible;
                     _autoCompleteTextView.Adapter = new ArrayAdapter<string>(this,
                         Android.Resource.Layout.SimpleDropDownItem1Line,

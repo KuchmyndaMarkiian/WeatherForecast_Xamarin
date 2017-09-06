@@ -1,16 +1,17 @@
-﻿using Newtonsoft.Json;
-using Realms;
+﻿using System;
+using Newtonsoft.Json;
 using WeatherForecast.Abstractions;
 
 namespace WeatherForecast.Models.ApiModels.Common
 {
-    public class Weather : RealmObject, ICloneable<Weather>
+    [Serializable]
+    public class Weather : SqLiteEntityBase, ICloneable<Weather>
     {
         /// <summary>
         /// Weather condition id
         /// </summary>
         [JsonProperty("id")]
-        public int Id { get; set; }
+        public int WeatherId { get; set; }
 
         /// <summary>
         /// Group of weather parameters (Rain, Snow, Extreme etc.)
@@ -30,6 +31,6 @@ namespace WeatherForecast.Models.ApiModels.Common
         [JsonProperty("icon")]
         public string Icon { get; set; }
 
-        public Weather Clone() => new Weather {Main = Main, Id = Id, Description = Description, Icon = Icon};
+        public Weather Clone() => new Weather {Main = Main, WeatherId = WeatherId, Description = Description, Icon = Icon};
     }
 }

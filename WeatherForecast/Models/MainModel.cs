@@ -1,10 +1,11 @@
-﻿using Realms;
+﻿using System;
 using WeatherForecast.Abstractions;
 using WeatherForecast.Models.ApiModels;
 
 namespace WeatherForecast.Models
 {
-    internal class MainModel:RealmObject,ICloneable<MainModel>
+    [Serializable]
+    internal class MainModel:ICloneable<MainModel>
     {
         public City CurrentModel { get; set; }=new City();
         public CityCurrrentWeather CurrentDayWeather { get; set; }=new CityCurrrentWeather();

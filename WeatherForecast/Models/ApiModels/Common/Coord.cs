@@ -1,10 +1,11 @@
-﻿using Newtonsoft.Json;
-using Realms;
+﻿using System;
+using Newtonsoft.Json;
 using WeatherForecast.Abstractions;
 
 namespace WeatherForecast.Models.ApiModels.Common
 {
-    public class Coord:RealmObject,ICloneable<Coord>
+    [Serializable]
+    public class Coord:SqLiteEntityBase,ICloneable<Coord>
     {
         /// <summary>
         /// City geo location, longitude

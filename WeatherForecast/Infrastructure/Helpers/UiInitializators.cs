@@ -13,7 +13,7 @@ namespace WeatherForecast.Infrastructure.Helpers
             dialog.SetContentView(Resource.Layout.loadingDialog);
             dialog.SetCancelable(false);
             dialog.Window.SetBackgroundDrawable(new ColorDrawable(Color.Transparent));
-            WindowManagerLayoutParams layoutParams = new WindowManagerLayoutParams();
+            var layoutParams = new WindowManagerLayoutParams();
             layoutParams.CopyFrom(dialog.Window.Attributes);
             layoutParams.Height = layoutParams.Width = ViewGroup.LayoutParams.WrapContent;
             dialog.Window.Attributes = layoutParams;

@@ -1,10 +1,11 @@
+using System;
 using Newtonsoft.Json;
-using Realms;
 using WeatherForecast.Abstractions;
 
 namespace WeatherForecast.Models.ApiModels.Common
 {
-    public class Main : RealmObject, ICloneable<Main>
+    [Serializable]
+    public class Main : SqLiteEntityBase, ICloneable<Main>
     {
         /// <summary>
         /// Temperature. Unit Default: Kelvin, Metric: Celsius, Imperial: Fahrenheit.

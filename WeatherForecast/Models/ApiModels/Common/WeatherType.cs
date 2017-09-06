@@ -1,9 +1,10 @@
-using Realms;
+using System;
 using WeatherForecast.Abstractions;
 
 namespace WeatherForecast.Models.ApiModels.Common
 {
-    public class WeatherType : RealmObject, ICloneable<WeatherType>, IWeatherType
+    [Serializable]
+    public class WeatherType : SqLiteEntityBase, ICloneable<WeatherType>, IWeatherType
     {
         public WeatherType Clone() => new WeatherType {Volume = Volume};
 

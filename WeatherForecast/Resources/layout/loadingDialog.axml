@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/transparent">
-    <com.wang.avi.AVLoadingIndicatorView
-        android:id="@+id/indicator"
-        android:layout_gravity="center"
-        app:indicatorName="LineScaleIndicator"
-        app:indicatorColor="@color/primaryDark"
-        android:layout_height="128dp"
-        android:layout_width="128dp"
-        android:padding="18dp"
-        style="@style/AVLoadingIndicatorView.Small"
-        android:background="@drawable/circle" />
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+              android:gravity="center"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+  <com.wang.avi.AVLoadingIndicatorView
+    android:id="@+id/indicator"
+    android:layout_gravity="center"
+    app:indicatorName="LineScaleIndicator"
+    app:indicatorColor="#00e5ff"
+    android:layout_height="100dp"
+    android:layout_width="100dp"
+    android:padding="18dp"
+    style="@style/AVLoadingIndicatorView.Small" />
 </LinearLayout>

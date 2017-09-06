@@ -29,6 +29,7 @@ namespace WeatherForecast.Activities
             Activity.FindViewById<TextView>(Resource.Id.rangeTemperture)
                     .Text =
                 $"{Math.Round(model.MinTemperature)}...{Math.Round(model.MaxTemperature)}";
+            Activity.FindViewById<ImageView>(Resource.Id.weatherIcon).SetImageResource(model.Icon);
         }
     }
 }

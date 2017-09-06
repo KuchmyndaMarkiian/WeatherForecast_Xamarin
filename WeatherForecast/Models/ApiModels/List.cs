@@ -1,13 +1,16 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json;
-using Realms;
+
+using SQLiteNetExtensions.Attributes;
 using WeatherForecast.Abstractions;
 using WeatherForecast.Models.ApiModels.Common;
 using JsonConverter = WeatherForecast.Infrastructure.Helpers.JsonConverter;
 
 namespace WeatherForecast.Models.ApiModels
 {
+    [Serializable]
     public class List:  ICloneable<List>
     {
         [JsonProperty("dt")]
@@ -15,7 +18,7 @@ namespace WeatherForecast.Models.ApiModels
         [JsonProperty("main")]
         public Main Main { get; set; }
 
-        [JsonProperty("weather"),Ignored]
+        [JsonProperty("weather")]
         public List<Weather> Weather { get;  set; }
 
         [JsonProperty("clouds")]

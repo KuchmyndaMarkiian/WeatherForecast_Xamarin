@@ -1,17 +1,19 @@
 ﻿using System;
 using Newtonsoft.Json;
-using Realms;
+
 using WeatherForecast.Abstractions;
+using WeatherForecast.Models.ApiModels.Common;
 
 namespace WeatherForecast.Models.ApiModels
 {
-    public class Sys : RealmObject, ICloneable<Sys>
+    [Serializable]
+    public class Sys : SqLiteEntityBase, ICloneable<Sys>
     {
         [JsonProperty("type")]
         public int Type { get; set; }
 
         [JsonProperty("id")]
-        public int Id { get; set; }
+        public int SysId { get; set; }
 
         [JsonProperty("message")]
         public double Message { get; set; }

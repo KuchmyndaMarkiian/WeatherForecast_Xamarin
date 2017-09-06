@@ -1,10 +1,12 @@
-﻿using Newtonsoft.Json;
-using Realms;
+﻿using System;
+using Newtonsoft.Json;
+
 using WeatherForecast.Abstractions;
 
 namespace WeatherForecast.Models.ApiModels.Common
 {
-    public class Clouds : RealmObject,ICloneable<Clouds>
+    [Serializable]
+    public class Clouds : SqLiteEntityBase,ICloneable<Clouds>
     {
         /// <summary>
         ///  Cloudiness, %

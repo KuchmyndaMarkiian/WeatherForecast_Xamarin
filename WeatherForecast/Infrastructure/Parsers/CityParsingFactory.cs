@@ -13,7 +13,7 @@ namespace WeatherForecast.Infrastructure.Parsers
     {
         public List<City> ParseText(IEnumerable<string> textLines)
         {
-            var enumerable = textLines as IList<string> ?? textLines.ToList();
+            var enumerable = textLines as List<string> ?? textLines.ToList();
             if (!enumerable.Any())
                 return null;
             return enumerable.AsParallel()
@@ -29,7 +29,7 @@ namespace WeatherForecast.Infrastructure.Parsers
                     if (items.Length == 5 && !string.IsNullOrEmpty(items[0]))
                         return new City
                         {
-                            Id = int.Parse(items[0]),
+                            CityId = int.Parse(items[0]),
                             Name = items[1],
                             CountryCode = items[4],
                             Coord = new Coord

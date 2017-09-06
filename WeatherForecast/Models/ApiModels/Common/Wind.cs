@@ -1,13 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using Newtonsoft.Json;
-using Realms;
 using WeatherForecast.Abstractions;
 
 namespace WeatherForecast.Models.ApiModels.Common
 {
-    public class Wind : RealmObject, ICloneable<Wind>
+    [Serializable]
+    public class Wind : SqLiteEntityBase, ICloneable<Wind>
     {
         /// <summary>
         /// Wind speed. Unit Default: meter/sec, Metric: meter/sec, Imperial: miles/hour.
@@ -39,10 +37,6 @@ namespace WeatherForecast.Models.ApiModels.Common
                 return "S";
             return "SW";
         }
-
-
-
-
         public Wind Clone() => new Wind {Degree = Degree, Speed = Speed};
     }
 }

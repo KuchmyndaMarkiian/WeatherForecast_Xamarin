@@ -1,13 +1,16 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json;
-using Realms;
+
 using WeatherForecast.Abstractions;
+using WeatherForecast.Models.ApiModels.Common;
 using JsonConverter = WeatherForecast.Infrastructure.Helpers.JsonConverter;
 
 namespace WeatherForecast.Models.ApiModels
 {
-    public class FiveDaysWeather: RealmObject, ICloneable<FiveDaysWeather>
+    [Serializable]
+    public class FiveDaysWeather: SqLiteEntityBase, ICloneable<FiveDaysWeather>
     {
         [JsonProperty("cod")]
         public string Cod { get; set; }
@@ -16,7 +19,7 @@ namespace WeatherForecast.Models.ApiModels
         [JsonProperty("cnt")]
         public int Count { get; set; }
 
-        [JsonProperty("list"), Ignored]
+        [JsonProperty("list")]
         public List<List> List { get; set; }
 
         public string ListJson
